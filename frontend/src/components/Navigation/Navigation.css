@@ -1,0 +1,43 @@
+body {
+  background-color: white;
+  font-family: "Lucida Grande";
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  display: inline;
+  margin-right: 10px;
+  float: right;
+  margin-top: -25px;
+}
+
+a.login {
+  background-color: #ff5500;
+  border: 1px solid #ff5500;
+  border-radius: 5px;
+  padding: 10px 15px 10px 15px;
+  color: white;
+}
+
+a.signup {
+  padding: 10px 15px 10px 15px;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+}
+
+a.home {
+  padding: 10px 15px 10px 15px;
+  color: white;
+  float: left;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.nav-bar {
+  background-color: #1f1e1e;
+  padding: 22px;
+}
