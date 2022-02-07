@@ -30,6 +30,7 @@ button {
     padding: 10px 40px 10px 40px;
     width: fit-content;
     margin-top: 50px;
+    font-size: 15px;
 }
 
 .right-side-login {
