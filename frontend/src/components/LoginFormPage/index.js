@@ -32,10 +32,12 @@ function LoginFormPage() {
                 alt="lofi girl"
             ></img>
             <div className="right-side-login">
-                <form onSubmit={handleSubmit}>
+                <form className="login-form" onSubmit={handleSubmit}>
                     <ul>
                         {errors.map((error, idx) => (
-                            <li key={idx}>{error}</li>
+                            <li className="errors" key={idx}>
+                                {error}
+                            </li>
                         ))}
                     </ul>
                     <label for="username">Username or Email</label>
