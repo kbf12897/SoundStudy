@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import "./SplashPage.css";
 
 function SplashPage() {
@@ -10,7 +11,9 @@ function SplashPage() {
             ></img>
             <div className="right-side-splash">
                 <h2>Discover and share your favorite study toons</h2>
-                <div className="splash-signup">Signup for free</div>
+                <NavLink className={"splash-signup"} to="/signup">
+                    Signup for free
+                </NavLink>
             </div>
         </div>
     );
