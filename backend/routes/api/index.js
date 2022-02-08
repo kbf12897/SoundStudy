@@ -2,12 +2,12 @@
 const router = require("express").Router();
 const sessionRouter = require("./session.js");
 const usersRouter = require("./users.js");
-const userMainRouter = require("./user-main.js");
+const songsRouter = require("./songs.js");
 
 router.use("/session", sessionRouter);
 
 router.use("/users", usersRouter);
 
-router.use("/user-main", userMainRouter);
+router.use("/songs", songsRouter);
 
 module.exports = router;

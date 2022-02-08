@@ -32,10 +32,59 @@
 
 .song-container {
     width: 90%;
-    display: block;
     margin: 0 auto;
     background-color: #1f1e1e;
     height: 600px;
     margin-top: 50px;
     border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    border: 10px solid #1f1e1e;
+}
+
+.no-song-img {
+    width: 200px;
+    height: 200px;
+    margin-top: 10px;
+}
+
+.song-container > div > div {
+    margin-top: 10px;
+}
+
+.grid1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.grid2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.grid3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.grid4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.grid5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
 }
