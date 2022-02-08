@@ -1,6 +1,14 @@
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import "./MainPage.css";
 
 function MainPage() {
+    const sessionUser = useSelector((state) => state.session.user);
+
+    if (!sessionUser) {
+        return <Redirect to="/" />;
+    }
+
     return (
         <div>
             <img
