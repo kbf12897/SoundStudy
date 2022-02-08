@@ -32,12 +32,13 @@ function MainPage() {
             <div className="song-container">
                 {songs.map(({ id, title }) => {
                     return (
-                        <div className={`grid${id}`} key={id}>
+                        <div className={`grid${id} grid`} key={id}>
                             <img
                                 className="no-song-img"
-                                src="https://d1e4pidl3fu268.cloudfront.net/38187a5a-84e3-4971-8571-d9c5c09b9fa7/mp3.jpg"
+                                src="https://cdn2.iconfinder.com/data/icons/audio-files-essential/48/v-30-512.png"
                             />
                             <div>{title}</div>
+                            <div class="play-button"></div>
                         </div>
                     );
                 })}
