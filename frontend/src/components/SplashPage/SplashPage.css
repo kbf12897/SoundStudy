@@ -19,6 +19,13 @@
 .right-side-splash {
     float: right;
     width: 50%;
+    position: absolute;
+    left: 60%;
+}
+
+.right-side-content {
+    position: absolute;
+    right: 40%;
 }
 
 h2 {
@@ -27,7 +34,6 @@ h2 {
         Garuda, Verdana, Tahoma, sans-serif;
     font-weight: 200;
     text-align: center;
-    margin-left: 150px;
     margin-top: 200px;
     margin-bottom: 200px;
 }
@@ -39,5 +45,5 @@ h2 {
     color: white;
     border-radius: 5px;
     text-decoration: none;
-    margin-left: 450px;
+    margin-left: 180px;
 }

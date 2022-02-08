@@ -10,10 +10,12 @@ function SplashPage() {
                 alt="lofi girl"
             ></img>
             <div className="right-side-splash">
-                <h2>Discover and share your favorite study toons</h2>
-                <NavLink className={"splash-signup"} to="/signup">
-                    Signup for free
-                </NavLink>
+                <div className="right-side-content">
+                    <h2>Discover and share your favorite study toons</h2>
+                    <NavLink className={"splash-signup"} to="/signup">
+                        Signup for free
+                    </NavLink>
+                </div>
             </div>
         </div>
     );
