@@ -10,6 +10,7 @@
     margin-top: 55px;
     margin-right: 20px;
     width: 300px;
+    border-radius: 5px;
 }
 
 .add-song-button {
@@ -27,4 +28,14 @@
     display: block;
     margin: 0 auto;
     border-top: 4px solid #ff5500;
+}
+
+.song-container {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    background-color: #1f1e1e;
+    height: 600px;
+    margin-top: 50px;
+    border-radius: 5px;
 }

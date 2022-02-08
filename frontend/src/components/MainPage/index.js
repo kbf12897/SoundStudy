@@ -12,6 +12,7 @@ function MainPage() {
                 <input className="add-song-input" type="text"></input>
                 <button className="add-song-button">Upload your own</button>
             </div>
+            <div className="song-container"></div>
         </div>
     );
 }
