@@ -1,11 +1,49 @@
 .song-info {
     background-color: #1e1e1e;
     margin: 0 auto;
-    height: fit-content;
+    height: 100em;
     width: 90%;
     border-top: 4px solid #ff5500;
 }
 
 .song-title {
     color: white;
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.no-song-img {
+    float: right;
+    padding: 30px;
+    margin-right: 40px;
+}
+
+.comment-div {
+    background-color: #1e1e1e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 500px;
+}
+
+.comment-input-button {
+    background-color: #1e1e1e;
+}
+
+.comment-input {
+    background-color: white;
+    border-radius: 5px;
+    width: 200px;
+    height: 25px;
+}
+
+.comment-label {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.comment-button {
+    padding: 5px 30px 5px 30px;
+    margin-left: 10px;
 }
