@@ -1,0 +1,38 @@
+.modal-button {
+    float: right;
+    margin-right: 80px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.new-song-form {
+    background-color: #1e1e1e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+}
+
+.song-name,
+.song-url {
+    background-color: white;
+    border-radius: 5px;
+    width: 200px;
+}
+
+label {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.add-song-button {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    background-color: #1e1e1e;
+}
