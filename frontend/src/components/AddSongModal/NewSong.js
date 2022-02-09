@@ -1,15 +1,27 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addSong } from "../../store/songs";
 import "./SongModal.css";
 
 function AddSong() {
     const dispatch = useDispatch();
+    const sessionUser = useSelector((state) => state.session.user);
+    const userId = sessionUser.id;
+
     const [title, setTitle] = useState("");
     const [url, setUrl] = useState("");
     const [errors, setErrors] = useState([]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
+        let payload = {
+            userId,
+            url,
+            title,
+        };
+
+        return await dispatch(addSong(payload));
     };
 
     return (
@@ -25,7 +37,7 @@ function AddSong() {
                 className="song-name"
                 type="text"
                 value={title}
-                onChange={(e) => setUrl(e.target.value)}
+                onChange={(e) => setTitle(e.target.value)}
                 required
             />
             <label for="song-url">Song Url</label>
