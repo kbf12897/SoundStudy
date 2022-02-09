@@ -1,0 +1,3 @@
+function AudioPlayer() {
+    return;
+}

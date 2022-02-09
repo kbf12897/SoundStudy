@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { getSongs } from "../../store/songs";
+import AddSongModal from "../AddSongModal";
 import "./MainPage.css";
 
 function MainPage() {
@@ -9,6 +10,8 @@ function MainPage() {
     const songsObj = useSelector((state) => state.songState.songs);
     const songs = Object.values(songsObj);
     const dispatch = useDispatch();
+
+    const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
         dispatch(getSongs());
@@ -25,10 +28,7 @@ function MainPage() {
                 alt="lofi-pic"
                 src="https://f4.bcbits.com/img/0024563747_100.png"
             />
-            <div className="add-song">
-                <input className="add-song-input" type="text"></input>
-                <button className="add-song-button">Upload your own</button>
-            </div>
+            <AddSongModal />
             <div className="song-container">
                 {songs.map(({ id, title }) => {
                     return (
@@ -38,7 +38,7 @@ function MainPage() {
                                 src="https://cdn2.iconfinder.com/data/icons/audio-files-essential/48/v-30-512.png"
                             />
                             <div>{title}</div>
-                            <div class="play-button"></div>
+                            <div className="play-button"></div>
                         </div>
                     );
                 })}
