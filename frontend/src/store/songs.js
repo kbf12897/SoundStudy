@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD = "/songs/LOAD";
 const ADD = "/songs/ADD";
+const DELETE = "/songs/DELETE";
 
 const load = (songs) => ({
     type: LOAD,
@@ -10,6 +11,11 @@ const load = (songs) => ({
 
 const add = (song) => ({
     type: ADD,
+    song,
+});
+
+const remove = (song) => ({
+    type: DELETE,
     song,
 });
 
@@ -38,6 +44,8 @@ export const addSong = (payload) => async (dispatch) => {
         return newSong;
     }
 };
+
+export const removeSong = () => async (dispatch) => {};
 
 const initialState = {
     songs: [],

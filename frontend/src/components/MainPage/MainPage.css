@@ -25,7 +25,7 @@
     width: 90%;
     margin: 0 auto;
     background-color: #1f1e1e;
-    height: 600px;
+    height: fit-content;
     margin-top: 50px;
     border-radius: 5px;
     display: grid;

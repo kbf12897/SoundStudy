@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { getSongs } from "../../store/songs";
@@ -10,6 +11,8 @@ function MainPage() {
     const songsObj = useSelector((state) => state.songState.songs);
     const songs = Object.values(songsObj);
     const dispatch = useDispatch();
+
+    console.log(songs);
 
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -32,14 +35,16 @@ function MainPage() {
             <div className="song-container">
                 {songs.map(({ id, title }) => {
                     return (
-                        <div className={`grid${id} grid`} key={id}>
-                            <img
-                                className="no-song-img"
-                                src="https://cdn2.iconfinder.com/data/icons/audio-files-essential/48/v-30-512.png"
-                            />
-                            <div>{title}</div>
-                            <div className="play-button"></div>
-                        </div>
+                        <NavLink key={id} to={`/songs/${id}`}>
+                            <div className={`grid${id} grid`} key={id}>
+                                <img
+                                    className="no-song-img"
+                                    src="https://cdn2.iconfinder.com/data/icons/audio-files-essential/48/v-30-512.png"
+                                />
+                                <div>{title}</div>
+                                <div className="play-button"></div>
+                            </div>
+                        </NavLink>
                     );
                 })}
             </div>

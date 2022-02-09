@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import SplashPage from "./components/SplashPage";
+import SongPage from "./components/SongPage";
 import MainPage from "./components/MainPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
@@ -31,6 +32,9 @@ function App() {
                     </Route>
                     <Route path="/user-main">
                         <MainPage />
+                    </Route>
+                    <Route path="/songs/:songId">
+                        <SongPage />
                     </Route>
                 </Switch>
             )}

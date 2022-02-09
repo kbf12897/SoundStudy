@@ -1,0 +1,11 @@
+.song-info {
+    background-color: #1e1e1e;
+    margin: 0 auto;
+    height: fit-content;
+    width: 90%;
+    border-top: 4px solid #ff5500;
+}
+
+.song-title {
+    color: white;
+}

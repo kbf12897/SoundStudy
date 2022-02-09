@@ -20,4 +20,6 @@ router.post(
     })
 );
 
+router.delete("/");
+
 module.exports = router;
