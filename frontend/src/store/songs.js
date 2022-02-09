@@ -9,7 +9,7 @@ const load = (songs) => ({
 });
 
 const add = (song) => ({
-    type: add,
+    type: ADD,
     song,
 });
 
@@ -19,8 +19,8 @@ export const getSongs = () => async (dispatch) => {
     if (response.ok) {
         const songs = await response.json();
         dispatch(load(songs));
+        return songs;
     }
-    return response;
 };
 
 export const addSong = (payload) => async (dispatch) => {
