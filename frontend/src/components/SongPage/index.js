@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getSongs } from "../../store/songs";
 import { removeSong } from "../../store/songs";
+import EditSongModal from "../EditSongForm";
 import "./SongPage.css";
 
 function SongPage() {
@@ -34,7 +35,7 @@ function SongPage() {
                             src="https://cdn2.iconfinder.com/data/icons/audio-files-essential/48/v-30-512.png"
                         />
                         <div className="edit-delete">
-                            <button className="edit-song">Edit song</button>
+                            <EditSongModal />
                             <button
                                 className="delete-song"
                                 onClick={() => handleDelete(songId)}

@@ -1,0 +1,22 @@
+.edit-song-form {
+    background-color: #1e1e1e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+}
+
+.edit-song-name,
+.edit-song-url {
+    background-color: white;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.edit-song-button {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

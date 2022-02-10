@@ -37,4 +37,13 @@ router.delete(
     })
 );
 
+router.put(
+    "/:songId",
+    asyncHandler(async function (req, res) {
+        const songId = req.params.songId;
+        const song = await db.Song.findOne({ where: { id: songId } });
+        return res.json(song);
+    })
+);
+
 module.exports = router;
