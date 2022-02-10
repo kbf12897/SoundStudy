@@ -33,16 +33,16 @@ function MainPage() {
             <div className="song-container">
                 {songs.map(({ id, title }) => {
                     return (
-                        <NavLink key={id} to={`/songs/${id}`}>
-                            <div className={`grid${id} grid`} key={id}>
+                        <div className={`grid${id} grid`} key={id}>
+                            <NavLink key={id} to={`/songs/${id}`}>
                                 <img
                                     className="no-song-img"
                                     src="https://cdn2.iconfinder.com/data/icons/audio-files-essential/48/v-30-512.png"
                                 />
-                                <div>{title}</div>
-                                <div className="play-button"></div>
-                            </div>
-                        </NavLink>
+                            </NavLink>
+                            <div>{title}</div>
+                            <div className="play-button"></div>
+                        </div>
                     );
                 })}
             </div>
