@@ -33,6 +33,11 @@ a.home {
     color: white;
     float: left;
     background-color: #1f1e1e;
+    width: 0;
+    height: 0;
+    margin-top: -45px;
+    display: flex;
+    flex-direction: row;
 }
 
 .profile-button {
@@ -73,4 +78,16 @@ ul {
 .nav-bar {
     background-color: #1f1e1e;
     padding: 22px;
+}
+
+.home-button {
+    height: 50px;
+    width: 50px;
+    display: relative;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.home span {
+    margin-top: 7px;
 }

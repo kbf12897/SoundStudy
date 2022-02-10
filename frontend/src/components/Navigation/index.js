@@ -28,7 +28,11 @@ function Navigation({ isLoaded }) {
             <ul>
                 <li className="nav-links">
                     <NavLink className={"home"} exact to="/user-main">
-                        Home
+                        <img
+                            className="home-button"
+                            src="https://upload.wikimedia.org/wikipedia/en/2/23/Lofi_girl_logo.jpg"
+                        />
+                        <span>Sound Study</span>
                     </NavLink>
                     {isLoaded && sessionLinks}
                 </li>
