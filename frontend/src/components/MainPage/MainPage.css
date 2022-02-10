@@ -29,7 +29,7 @@
     margin-top: 50px;
     border-radius: 5px;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 20px;
     border: 20px solid #1f1e1e;

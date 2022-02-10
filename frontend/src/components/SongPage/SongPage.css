@@ -1,9 +1,14 @@
-.song-info {
+.song-div {
     background-color: #1e1e1e;
     margin: 0 auto;
     height: 100em;
     width: 90%;
     border-top: 4px solid #ff5500;
+}
+
+.song-info {
+    background-color: #1e1e1e;
+    height: fit-content;
 }
 
 .song-title {
@@ -17,6 +22,7 @@
     float: right;
     padding: 30px;
     margin-right: 40px;
+    margin-bottom: 40px;
 }
 
 .comment-div {
@@ -24,11 +30,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 500px;
+    width: 94%;
+    height: 75em;
+    background-color: #d7d2db;
+    margin: 0 auto;
+    border-top: 3px solid black;
+    border-radius: 10px;
 }
 
 .comment-input-button {
-    background-color: #1e1e1e;
+    background-color: #d7d2db;
 }
 
 .comment-input {
@@ -39,11 +50,19 @@
 }
 
 .comment-label {
-    background-color: #1e1e1e;
-    color: white;
+    background-color: #d7d2db;
+    color: black;
 }
 
 .comment-button {
     padding: 5px 30px 5px 30px;
     margin-left: 10px;
+}
+
+.comment-section {
+    background-color: white;
+    padding: 50px;
+    margin-top: 50px;
+    width: 80%;
+    height: 400px;
 }
