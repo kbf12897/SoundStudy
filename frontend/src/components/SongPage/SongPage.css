@@ -21,7 +21,7 @@
 .no-song-img {
     float: right;
     padding: 30px;
-    margin-right: 40px;
+    margin-right: 50px;
     margin-bottom: 40px;
 }
 
@@ -65,4 +65,24 @@
     margin-top: 50px;
     width: 80%;
     height: 400px;
+}
+
+.edit-delete {
+    background-color: #1e1e1e;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 50px;
+    margin-top: 210px;
+}
+
+.edit-song {
+    padding: 5px 30px 5px 30px;
+    width: 150px;
+}
+
+.delete-song {
+    padding: 5px 30px 5px 30px;
+    width: 150px;
+    margin-left: 10px;
 }

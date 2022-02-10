@@ -14,9 +14,9 @@ const add = (song) => ({
     song,
 });
 
-const remove = (song) => ({
+const remove = (songId) => ({
     type: DELETE,
-    song,
+    songId,
 });
 
 export const getSongs = () => async (dispatch) => {
@@ -56,7 +56,17 @@ export const addSong = (payload) => async (dispatch) => {
     }
 };
 
-export const removeSong = () => async (dispatch) => {};
+export const removeSong = (songId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/songs/${songId}`, {
+        method: "DELETE",
+    });
+
+    console.log("WORDWORSWORDS", songId);
+    if (response.ok) {
+        dispatch(remove(songId));
+        return;
+    }
+};
 
 const initialState = {
     songs: [],
@@ -72,11 +82,14 @@ const songReducer = (state = initialState, action) => {
                 allSongs[song.id] = song;
             });
             newState.songs = allSongs;
-            console.log("REDUCER LOG", newState);
             return newState;
         case ADD:
             newState = { ...state, songs: { ...state.songs } };
             newState.songs[action.song.id] = action.song;
+            return newState;
+        case DELETE:
+            newState = { ...state };
+            delete newState[action.songId];
             return newState;
         default:
             return state;

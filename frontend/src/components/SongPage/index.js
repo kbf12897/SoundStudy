@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { getSongs } from "../../store/songs";
+import { removeSong } from "../../store/songs";
 import "./SongPage.css";
 
 function SongPage() {
@@ -9,10 +10,16 @@ function SongPage() {
     const song = useSelector((state) => state.songState.songs[songId]);
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(getSongs());
     }, [dispatch]);
+
+    const handleDelete = (songId) => {
+        dispatch(removeSong(songId));
+        history.push("/user-main");
+    };
 
     if (!song) {
         return null;
@@ -26,6 +33,15 @@ function SongPage() {
                             className="no-song-img"
                             src="https://cdn2.iconfinder.com/data/icons/audio-files-essential/48/v-30-512.png"
                         />
+                        <div className="edit-delete">
+                            <button className="edit-song">Edit song</button>
+                            <button
+                                className="delete-song"
+                                onClick={() => handleDelete(songId)}
+                            >
+                                Delete song
+                            </button>
+                        </div>
                     </div>
                     <div className="comment-div">
                         <h4 className="comment-label">Comments</h4>

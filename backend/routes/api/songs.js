@@ -28,6 +28,13 @@ router.get(
     })
 );
 
-router.delete("/");
+router.delete(
+    "/:songId",
+    asyncHandler(async function (req, res) {
+        const songId = req.params.songId;
+        await db.Song.destroy({ where: { id: songId } });
+        return res.json("success");
+    })
+);
 
 module.exports = router;
