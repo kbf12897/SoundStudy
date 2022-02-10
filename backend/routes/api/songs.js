@@ -20,6 +20,14 @@ router.post(
     })
 );
 
+router.get(
+    "/:songId",
+    asyncHandler(async function (req, res) {
+        const songs = await db.Song.findAll();
+        return res.json(songs);
+    })
+);
+
 router.delete("/");
 
 module.exports = router;

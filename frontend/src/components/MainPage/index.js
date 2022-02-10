@@ -12,8 +12,6 @@ function MainPage() {
     const songs = Object.values(songsObj);
     const dispatch = useDispatch();
 
-    console.log(songs);
-
     const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
