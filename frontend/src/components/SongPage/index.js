@@ -6,7 +6,8 @@ import "./SongPage.css";
 
 function SongPage() {
     const { songId } = useParams();
-    const song = useSelector((state) => state.songState.songs);
+    const songs = useSelector((state) => state.songState.songs);
+    const song = songs[songId];
 
     const dispatch = useDispatch();
 
