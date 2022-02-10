@@ -7,12 +7,12 @@ import "./EditSongModal.css";
 function EditSong() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    const userId = sessionUser.id;
     const { songId } = useParams();
+    const song = useSelector((state) => state.songState.songs[songId]);
+    const userId = sessionUser.id;
 
-    const [title, setTitle] = useState("");
-    const [url, setUrl] = useState("");
-    const [errors, setErrors] = useState([]);
+    const [title, setTitle] = useState(song.title);
+    const [url, setUrl] = useState(song.url);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,11 +30,6 @@ function EditSong() {
     return (
         <form className="edit-song-form" onSubmit={handleSubmit}>
             <h3>Edit song</h3>
-            <ul>
-                {errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
-                ))}
-            </ul>
             <label>Song Name</label>
             <input
                 className="edit-song-name"

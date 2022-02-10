@@ -42,6 +42,7 @@ router.put(
     asyncHandler(async function (req, res) {
         const songId = req.params.songId;
         const song = await db.Song.findOne({ where: { id: songId } });
+        song.update(req.body);
         return res.json(song);
     })
 );

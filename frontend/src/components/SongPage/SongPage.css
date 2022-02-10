@@ -76,13 +76,9 @@
     margin-top: 210px;
 }
 
-.edit-song {
-    padding: 5px 30px 5px 30px;
-    width: 150px;
-}
-
 .delete-song {
     padding: 5px 30px 5px 30px;
     width: 150px;
     margin-left: 10px;
+    cursor: pointer;
 }
