@@ -9,9 +9,26 @@ import "./SongPage.css";
 function SongPage() {
     const { songId } = useParams();
     const song = useSelector((state) => state.songState.songs[songId]);
+    const sessionUser = useSelector((state) => state.session.user);
+    const userId = sessionUser.id;
 
     const dispatch = useDispatch();
     const history = useHistory();
+
+    let songEditLinks;
+    if (userId === song.userId) {
+        songEditLinks = (
+            <div className="edit-delete">
+                <EditSongModal />
+                <button
+                    className="delete-song"
+                    onClick={() => handleDelete(songId)}
+                >
+                    Delete song
+                </button>
+            </div>
+        );
+    }
 
     useEffect(() => {
         dispatch(getSongs());
@@ -34,15 +51,7 @@ function SongPage() {
                             className="no-song-img"
                             src="https://cdn2.iconfinder.com/data/icons/audio-files-essential/48/v-30-512.png"
                         />
-                        <div className="edit-delete">
-                            <EditSongModal />
-                            <button
-                                className="delete-song"
-                                onClick={() => handleDelete(songId)}
-                            >
-                                Delete song
-                            </button>
-                        </div>
+                        {songEditLinks}
                     </div>
                     <div className="comment-div">
                         <h4 className="comment-label">Comments</h4>
