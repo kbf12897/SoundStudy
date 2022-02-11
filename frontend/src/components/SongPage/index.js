@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getSongs } from "../../store/songs";
 import { removeSong } from "../../store/songs";
+import { getComments } from "../../store/comments";
 import EditSongModal from "../EditSongForm";
 import "./SongPage.css";
 
@@ -11,9 +12,25 @@ function SongPage() {
     const song = useSelector((state) => state.songState.songs[songId]);
     const sessionUser = useSelector((state) => state.session.user);
     const userId = sessionUser.id;
+    const commentsObj = useSelector((state) => state.commentState);
+    console.log("COMMENTS OBJECT", commentsObj);
+    const comments = Object.values(commentsObj);
 
     const dispatch = useDispatch();
     const history = useHistory();
+
+    useEffect(() => {
+        dispatch(getSongs());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(getComments(songId));
+    }, [dispatch]);
+
+    const handleDelete = (songId) => {
+        dispatch(removeSong(songId));
+        history.push("/user-main");
+    };
 
     let songEditLinks;
     if (userId === song.userId) {
@@ -29,15 +46,6 @@ function SongPage() {
             </div>
         );
     }
-
-    useEffect(() => {
-        dispatch(getSongs());
-    }, [dispatch]);
-
-    const handleDelete = (songId) => {
-        dispatch(removeSong(songId));
-        history.push("/user-main");
-    };
 
     if (!song) {
         return null;
@@ -64,7 +72,13 @@ function SongPage() {
                             <button className="comment-button">Submit</button>
                         </div>
                         <div className="comment-section">
-                            <ul></ul>
+                            {/* {comments.map(({ id, commentBody, userId }) => {
+                                return (
+                                    <ul key={id}>
+                                        <li key={id}>{commentBody}</li>
+                                    </ul>
+                                );
+                            })} */}
                         </div>
                     </div>
                 </div>
