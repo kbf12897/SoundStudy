@@ -19,7 +19,6 @@ function Comments() {
 
     const dispatch = useDispatch();
     const [commentBody, setCommentBody] = useState("");
-    const [commentId, setCommentId] = useState(1);
 
     //useEffect for getComments
     useEffect(() => {

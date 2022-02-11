@@ -45,6 +45,9 @@
     background-color: rgb(215, 210, 219);
     border-radius: 5px;
     cursor: pointer;
+    padding: 30px;
+    margin-right: 50px;
+    margin-bottom: 40px;
 }
 
 .song-container > div > div {

@@ -57,8 +57,6 @@ export const deleteComment = (payload) => async (dispatch) => {
         }
     );
 
-    console.log("RESPONSE", response);
-
     if (response.ok) {
         dispatch(remove(payload.commentId));
         return;

@@ -4,7 +4,8 @@
     flex-direction: column;
     align-items: center;
     width: 94%;
-    height: 75em;
+    height: fit-content;
+    padding-bottom: 60px;
     background-color: #d7d2db;
     margin: 0 auto;
     border-top: 3px solid black;
@@ -39,6 +40,7 @@
     margin-top: 50px;
     width: 80%;
     height: fit-content;
+    border-radius: 5px;
 }
 
 .edit-delete {
