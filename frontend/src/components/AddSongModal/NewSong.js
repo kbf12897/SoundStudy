@@ -10,7 +10,6 @@ function AddSong() {
 
     const [title, setTitle] = useState("");
     const [url, setUrl] = useState("");
-    const [errors, setErrors] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,11 +26,6 @@ function AddSong() {
     return (
         <form className="new-song-form" onSubmit={handleSubmit}>
             <h3>Share your favorites</h3>
-            <ul>
-                {errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
-                ))}
-            </ul>
             <label>Song Name</label>
             <input
                 className="song-name"

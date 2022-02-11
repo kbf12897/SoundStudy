@@ -34,8 +34,8 @@ function Comments() {
             songId,
             commentBody,
         };
-
-        return dispatch(addComment(payload));
+        setCommentBody("");
+        return await dispatch(addComment(payload));
     };
 
     //edit comment handleSubmit
@@ -73,10 +73,8 @@ function Comments() {
         songComments = filteredComments.map((comment) => {
             return (
                 <div className="comment-container">
-                    <div className="comment-user" key={comment.id}>
-                        {username}
-                    </div>
-                    <li className="comment">
+                    <div className="comment-user">{username}</div>
+                    <li key={comment.id} className="comment">
                         {comment.commentBody}
                         <button className="edit-comment-button">edit</button>
                         <button
@@ -102,6 +100,7 @@ function Comments() {
                     onChange={(e) => setCommentBody(e.target.value)}
                     className="comment-input"
                     placeholder="Write a comment"
+                    value={commentBody}
                     required
                 ></input>
                 <button className="comment-button">Submit</button>

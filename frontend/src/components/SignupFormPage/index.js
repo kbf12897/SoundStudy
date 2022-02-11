@@ -41,8 +41,8 @@ function SignupFormPage() {
             <div className="right-side-signup">
                 <form className="signup-form" onSubmit={handleSubmit}>
                     <ul>
-                        {errors.map((error, idx) => (
-                            <li className="errors" key={idx}>
+                        {errors.map((error, id) => (
+                            <li className="errors" key={id}>
                                 {error}
                             </li>
                         ))}

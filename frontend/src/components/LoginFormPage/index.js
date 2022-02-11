@@ -34,8 +34,8 @@ function LoginFormPage() {
             <div className="right-side-login">
                 <form className="login-form" onSubmit={handleSubmit}>
                     <ul>
-                        {errors.map((error, idx) => (
-                            <li className="errors" key={idx}>
+                        {errors.map((error, id) => (
+                            <li className="errors" key={id}>
                                 {error}
                             </li>
                         ))}

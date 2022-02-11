@@ -33,7 +33,7 @@ function MainPage() {
             <div className="song-container">
                 {songs.map(({ id, title }) => {
                     return (
-                        <div className={`grid${id} grid`} key={id}>
+                        <div className={`grid${id} grid`}>
                             <NavLink key={id} to={`/songs/${id}`}>
                                 <img
                                     className="no-song-img"
