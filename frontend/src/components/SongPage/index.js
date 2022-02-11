@@ -13,10 +13,8 @@ function SongPage() {
     const sessionUser = useSelector((state) => state.session.user);
     const userId = sessionUser.id;
     const commentsObj = useSelector((state) => state.commentState);
-    console.log("COMMENTS OBJECT", commentsObj);
     const comments = Object.values(commentsObj);
-    const comm = Object.values(comments);
-    console.log("COMMENTS LINE 17", comm);
+    console.log("COMMENTS LINE 16", comments);
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -35,8 +33,10 @@ function SongPage() {
     };
 
     const filteredComments = comments.filter((comment) => {
-        console.log("COMMENTCOMMENT", comment);
-        return comment.songId === songId;
+        console.log("COMMENTSONGID", comment.songId);
+        console.log("SONGID", songId);
+
+        return Number(comment.songId) == Number(songId);
     });
     console.log("FILTERFILTERFELTER", filteredComments);
     // console.log("FILTERFILTE", comments);
