@@ -82,3 +82,7 @@
     margin-left: 10px;
     cursor: pointer;
 }
+
+.comment {
+    color: red;
+}

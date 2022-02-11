@@ -40,7 +40,7 @@ function LoginFormPage() {
                             </li>
                         ))}
                     </ul>
-                    <label for="username">Username or Email</label>
+                    <label>Username or Email</label>
                     <input
                         className="username"
                         type="text"
@@ -49,7 +49,7 @@ function LoginFormPage() {
                         required
                     />
 
-                    <label for="password">Password</label>
+                    <label>Password</label>
                     <input
                         className="password"
                         type="password"
