@@ -64,7 +64,7 @@
     padding: 50px;
     margin-top: 50px;
     width: 80%;
-    height: 400px;
+    height: fit-content;
 }
 
 .edit-delete {
@@ -83,6 +83,25 @@
     cursor: pointer;
 }
 
+.comment-container {
+    padding-top: 30px;
+    background-color: white;
+}
+
+.comment-ul {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.comment-user {
+    background-color: white;
+    color: rgb(179, 176, 176);
+}
+
 .comment {
-    color: red;
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 30px;
 }

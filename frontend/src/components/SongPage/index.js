@@ -11,10 +11,10 @@ function SongPage() {
     const { songId } = useParams();
     const song = useSelector((state) => state.songState.songs[songId]);
     const sessionUser = useSelector((state) => state.session.user);
+    const username = sessionUser.username;
     const userId = sessionUser.id;
     const commentsObj = useSelector((state) => state.commentState);
     const comments = Object.values(commentsObj);
-    console.log("COMMENTS LINE 16", comments);
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -32,15 +32,12 @@ function SongPage() {
         history.push("/user-main");
     };
 
+    //filters comments for specific song page
     const filteredComments = comments.filter((comment) => {
-        console.log("COMMENTSONGID", comment.songId);
-        console.log("SONGID", songId);
-
-        return Number(comment.songId) == Number(songId);
+        return parseInt(comment.songId) == parseInt(songId);
     });
-    console.log("FILTERFILTERFELTER", filteredComments);
-    // console.log("FILTERFILTE", comments);
 
+    // song edit and delete buttons if user is the one who posted
     let songEditLinks;
     if (userId === song.userId) {
         songEditLinks = (
@@ -54,9 +51,30 @@ function SongPage() {
                 </button>
             </div>
         );
+    } else {
+        songEditLinks = null;
     }
 
-    if (!comments || !song) {
+    // render comments on page if there are comments that match songId
+    let songComments;
+    if (!comments) {
+        return null;
+    } else {
+        songComments = filteredComments.map((comment) => {
+            return (
+                <div className="comment-container" key={comment.id}>
+                    <div className="comment-user" key={comment.id}>
+                        {username}
+                    </div>
+                    <li className="comment" key={comment.id}>
+                        {comment.commentBody}
+                    </li>
+                </div>
+            );
+        });
+    }
+
+    if (!song) {
         return null;
     } else {
         return (
@@ -81,18 +99,7 @@ function SongPage() {
                             <button className="comment-button">Submit</button>
                         </div>
                         <div className="comment-section">
-                            <ul>
-                                {filteredComments.map((comment) => {
-                                    return (
-                                        <li
-                                            className="comment"
-                                            key={comment.id}
-                                        >
-                                            {comment.commentBody}
-                                        </li>
-                                    );
-                                })}
-                            </ul>
+                            <ul className="comment-ul">{songComments}</ul>
                         </div>
                     </div>
                 </div>
