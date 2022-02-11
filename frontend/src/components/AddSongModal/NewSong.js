@@ -32,7 +32,7 @@ function AddSong() {
                     <li key={idx}>{error}</li>
                 ))}
             </ul>
-            <label for="song-name">Song Name</label>
+            <label>Song Name</label>
             <input
                 className="song-name"
                 type="text"
@@ -40,7 +40,7 @@ function AddSong() {
                 onChange={(e) => setTitle(e.target.value)}
                 required
             />
-            <label for="song-url">Song Url</label>
+            <label>Song Url</label>
             <input
                 className="song-url"
                 type="text"

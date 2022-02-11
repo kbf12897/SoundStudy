@@ -47,7 +47,7 @@ function SignupFormPage() {
                             </li>
                         ))}
                     </ul>
-                    <label for="email">Email</label>
+                    <label>Email</label>
                     <input
                         className="email"
                         type="text"
@@ -55,7 +55,7 @@ function SignupFormPage() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
-                    <label for="username">Username</label>
+                    <label>Username</label>
                     <input
                         className="username"
                         type="text"

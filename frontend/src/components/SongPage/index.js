@@ -15,6 +15,8 @@ function SongPage() {
     const commentsObj = useSelector((state) => state.commentState);
     console.log("COMMENTS OBJECT", commentsObj);
     const comments = Object.values(commentsObj);
+    const comm = Object.values(comments);
+    console.log("COMMENTS LINE 17", comm);
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -32,6 +34,13 @@ function SongPage() {
         history.push("/user-main");
     };
 
+    const filteredComments = comments.filter((comment) => {
+        console.log("COMMENTCOMMENT", comment);
+        return comment.songId === songId;
+    });
+    console.log("FILTERFILTERFELTER", filteredComments);
+    // console.log("FILTERFILTE", comments);
+
     let songEditLinks;
     if (userId === song.userId) {
         songEditLinks = (
@@ -47,7 +56,7 @@ function SongPage() {
         );
     }
 
-    if (!song) {
+    if (!comments || !song) {
         return null;
     } else {
         return (
@@ -72,13 +81,18 @@ function SongPage() {
                             <button className="comment-button">Submit</button>
                         </div>
                         <div className="comment-section">
-                            {/* {comments.map(({ id, commentBody, userId }) => {
-                                return (
-                                    <ul key={id}>
-                                        <li key={id}>{commentBody}</li>
-                                    </ul>
-                                );
-                            })} */}
+                            <ul>
+                                {filteredComments.map((comment) => {
+                                    return (
+                                        <li
+                                            className="comment"
+                                            key={comment.id}
+                                        >
+                                            {comment.commentBody}
+                                        </li>
+                                    );
+                                })}
+                            </ul>
                         </div>
                     </div>
                 </div>

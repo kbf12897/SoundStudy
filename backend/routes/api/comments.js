@@ -7,11 +7,7 @@ const router = express.Router();
 router.get(
     "/",
     asyncHandler(async function (req, res) {
-        const songId = req.params.songId;
-        const id = parseInt(songId);
-        const comments = await db.Comment.findAll({
-            where: { songId: 2 },
-        });
+        const comments = await db.Comment.findAll();
         return res.json(comments);
     })
 );
