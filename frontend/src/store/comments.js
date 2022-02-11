@@ -9,9 +9,9 @@ const load = (comments) => ({
 
 export const getComments = (songId) => async (dispatch) => {
     const response = await csrfFetch(`/api/${songId}/comments`);
-    console.log("COMMMMMEENNNTTSS RESPONSE", response);
     if (response.ok) {
         const comments = await response.json();
+        console.log("COMMMMMMEEENNNNNTTSSS", comments);
         dispatch(load(comments));
         return comments;
     }

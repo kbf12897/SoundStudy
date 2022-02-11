@@ -8,8 +8,9 @@ router.get(
     "/",
     asyncHandler(async function (req, res) {
         const songId = req.params.songId;
+        const id = parseInt(songId);
         const comments = await db.Comment.findAll({
-            where: { songId: songId },
+            where: { songId: 2 },
         });
         return res.json(comments);
     })
