@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addComment, getComments, editComment } from "../../store/comments";
+import {
+    addComment,
+    getComments,
+    editComment,
+    deleteComment,
+} from "../../store/comments";
 import "./Comments.css";
 
 function Comments() {
@@ -14,12 +19,12 @@ function Comments() {
 
     const dispatch = useDispatch();
     const [commentBody, setCommentBody] = useState("");
-    const [showMenu, setShowMenu] = useState(false);
+    const [commentId, setCommentId] = useState(1);
 
     //useEffect for getComments
     useEffect(() => {
         dispatch(getComments(songId));
-    }, [dispatch, comments]);
+    }, [dispatch]);
 
     //addComment handleSubmit
     const handleSubmit = async (e) => {
@@ -48,6 +53,15 @@ function Comments() {
         return await dispatch(editComment(payload));
     };
 
+    const handleDelete = (songId, commentId) => {
+        const payload = {
+            songId,
+            commentId,
+        };
+
+        return dispatch(deleteComment(payload));
+    };
+
     //filters comments for specific song page
     const filteredComments = comments.filter((comment) => {
         return parseInt(comment.songId) == parseInt(songId);
@@ -63,13 +77,19 @@ function Comments() {
                     <div className="comment-user" key={comment.id}>
                         {username}
                     </div>
-                    <li className="comment">{comment.commentBody}</li>
-                    <div className="comment-buttons">
+                    <li className="comment">
+                        {comment.commentBody}
                         <button className="edit-comment-button">edit</button>
-                        <button className="delete-comment-button">
+                        <button
+                            onClick={() =>
+                                handleDelete(comment.songId, comment.id)
+                            }
+                            className="delete-comment-button"
+                        >
                             delete
                         </button>
-                    </div>
+                    </li>
+                    <div className="comment-buttons"></div>
                 </div>
             );
         });

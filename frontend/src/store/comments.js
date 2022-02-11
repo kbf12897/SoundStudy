@@ -2,7 +2,8 @@ import { csrfFetch } from "./csrf";
 
 const LOAD = "/songs/:songId/comments/LOAD";
 const ADD = "/songs/:songId/comments/ADD";
-const EDIT = "/songs/:songId/comments/EDIT";
+const DELETE = "/songs/:songId/comments/:commentId/DELETE";
+const EDIT = "/songs/:songId/comments/:commentId/EDIT";
 
 const load = (comments) => ({
     type: LOAD,
@@ -12,6 +13,11 @@ const load = (comments) => ({
 const add = (comment) => ({
     type: ADD,
     comment,
+});
+
+const remove = (commentId) => ({
+    type: DELETE,
+    commentId,
 });
 
 const edit = (comment) => ({
@@ -43,12 +49,31 @@ export const addComment = (payload) => async (dispatch) => {
     }
 };
 
+export const deleteComment = (payload) => async (dispatch) => {
+    const response = await csrfFetch(
+        `/api/${payload.songId}/comments/${payload.commentId}`,
+        {
+            method: "DELETE",
+        }
+    );
+
+    console.log("RESPONSE", response);
+
+    if (response.ok) {
+        dispatch(remove(payload.commentId));
+        return;
+    }
+};
+
 export const editComment = (payload) => async (dispatch) => {
-    const response = await csrfFetch(`/api/${payload.songId}/comments`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-    });
+    const response = await csrfFetch(
+        `/api/${payload.songId}/comments/${payload.commentId}`,
+        {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+        }
+    );
 
     if (response.ok) {
         const newComment = await response.json();
@@ -71,6 +96,10 @@ const commentReducer = (state = {}, action) => {
         case ADD:
             newState = { ...state, comments: { ...state.comments } };
             newState.comments[action.comment.id] = action.comment;
+            return newState;
+        case DELETE:
+            newState = { ...state };
+            delete newState[action.commentId];
             return newState;
         case EDIT:
             newState = { ...state };

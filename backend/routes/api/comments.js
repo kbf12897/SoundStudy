@@ -21,12 +21,21 @@ router.post(
 );
 
 router.put(
-    "/",
+    "/:commentId",
     asyncHandler(async function (req, res) {
         const commentId = req.body.commentId;
         const comment = await db.Comment.findOne({ where: { id: commentId } });
         comment.update(req.body);
         return res.json(comment);
+    })
+);
+
+router.delete(
+    "/:commentId",
+    asyncHandler(async function (req, res) {
+        const commentId = req.params.commentId;
+        await db.Comment.destroy({ where: { id: commentId } });
+        return res.json("success");
     })
 );
 
