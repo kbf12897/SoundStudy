@@ -40,7 +40,6 @@ export const getOneSong = (songId) => async (dispatch) => {
 
     if (response.ok) {
         const songs = await response.json();
-        console.log("ASDFAFDASAF", songs);
         dispatch(load(songs));
         return songs;
     }
@@ -53,10 +52,9 @@ export const addSong = (payload) => async (dispatch) => {
         body: JSON.stringify(payload),
     });
     let newSong;
-    console.log(response);
     if (response.ok) {
         newSong = await response.json();
-        console.log(newSong);
+
         dispatch(add(newSong));
         return newSong;
     }

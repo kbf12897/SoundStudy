@@ -12,4 +12,12 @@ router.get(
     })
 );
 
+router.post(
+    "/",
+    asyncHandler(async function (req, res) {
+        const comment = await db.Comment.create(req.body);
+        return res.json(comment);
+    })
+);
+
 module.exports = router;

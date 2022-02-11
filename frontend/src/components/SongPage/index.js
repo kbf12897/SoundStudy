@@ -1,45 +1,35 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getSongs } from "../../store/songs";
 import { removeSong } from "../../store/songs";
-import { getComments } from "../../store/comments";
 import EditSongModal from "../EditSongForm";
+import Comments from "../Comments";
 import "./SongPage.css";
 
 function SongPage() {
     const { songId } = useParams();
     const song = useSelector((state) => state.songState.songs[songId]);
     const sessionUser = useSelector((state) => state.session.user);
-    const username = sessionUser.username;
     const userId = sessionUser.id;
-    const commentsObj = useSelector((state) => state.commentState);
-    const comments = Object.values(commentsObj);
 
     const dispatch = useDispatch();
     const history = useHistory();
 
+    //useEffect for getSongs
     useEffect(() => {
         dispatch(getSongs());
     }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(getComments(songId));
-    }, [dispatch]);
-
+    //Deletes song and redirects to user-main
     const handleDelete = (songId) => {
         dispatch(removeSong(songId));
         history.push("/user-main");
     };
 
-    //filters comments for specific song page
-    const filteredComments = comments.filter((comment) => {
-        return parseInt(comment.songId) == parseInt(songId);
-    });
-
     // song edit and delete buttons if user is the one who posted
     let songEditLinks;
-    if (userId === song.userId) {
+    if (userId && userId === song.userId) {
         songEditLinks = (
             <div className="edit-delete">
                 <EditSongModal />
@@ -53,25 +43,7 @@ function SongPage() {
         );
     } else {
         songEditLinks = null;
-    }
-
-    // render comments on page if there are comments that match songId
-    let songComments;
-    if (!comments) {
-        return null;
-    } else {
-        songComments = filteredComments.map((comment) => {
-            return (
-                <div className="comment-container" key={comment.id}>
-                    <div className="comment-user" key={comment.id}>
-                        {username}
-                    </div>
-                    <li className="comment" key={comment.id}>
-                        {comment.commentBody}
-                    </li>
-                </div>
-            );
-        });
+        return songEditLinks;
     }
 
     if (!song) {
@@ -88,20 +60,7 @@ function SongPage() {
                         />
                         {songEditLinks}
                     </div>
-                    <div className="comment-div">
-                        <h4 className="comment-label">Comments</h4>
-                        <div className="comment-input-button">
-                            <input
-                                className="comment-input"
-                                placeholder="Write a comment"
-                                required
-                            ></input>
-                            <button className="comment-button">Submit</button>
-                        </div>
-                        <div className="comment-section">
-                            <ul className="comment-ul">{songComments}</ul>
-                        </div>
-                    </div>
+                    <Comments />
                 </div>
             </div>
         );
