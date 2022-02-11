@@ -20,4 +20,14 @@ router.post(
     })
 );
 
+router.put(
+    "/",
+    asyncHandler(async function (req, res) {
+        const commentId = req.body.commentId;
+        const comment = await db.Comment.findOne({ where: { id: commentId } });
+        comment.update(req.body);
+        return res.json(comment);
+    })
+);
+
 module.exports = router;

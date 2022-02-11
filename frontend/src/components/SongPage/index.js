@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Redirect } from "react-router-dom";
 import { getSongs } from "../../store/songs";
 import { removeSong } from "../../store/songs";
 import EditSongModal from "../EditSongForm";
@@ -29,7 +29,7 @@ function SongPage() {
 
     // song edit and delete buttons if user is the one who posted
     let songEditLinks;
-    if (userId && userId === song.userId) {
+    if (song && userId === song.userId) {
         songEditLinks = (
             <div className="edit-delete">
                 <EditSongModal />

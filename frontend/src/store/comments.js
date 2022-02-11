@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD = "/songs/:songId/comments/LOAD";
 const ADD = "/songs/:songId/comments/ADD";
+const EDIT = "/songs/:songId/comments/EDIT";
 
 const load = (comments) => ({
     type: LOAD,
@@ -10,6 +11,11 @@ const load = (comments) => ({
 
 const add = (comment) => ({
     type: ADD,
+    comment,
+});
+
+const edit = (comment) => ({
+    type: EDIT,
     comment,
 });
 
@@ -37,6 +43,20 @@ export const addComment = (payload) => async (dispatch) => {
     }
 };
 
+export const editComment = (payload) => async (dispatch) => {
+    const response = await csrfFetch(`/api/${payload.songId}/comments`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+        const newComment = await response.json();
+        dispatch(edit(newComment));
+        return newComment;
+    }
+};
+
 const commentReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
@@ -50,6 +70,10 @@ const commentReducer = (state = {}, action) => {
             return newState;
         case ADD:
             newState = { ...state, comments: { ...state.comments } };
+            newState.comments[action.comment.id] = action.comment;
+            return newState;
+        case EDIT:
+            newState = { ...state };
             newState.comments[action.comment.id] = action.comment;
             return newState;
         default:
