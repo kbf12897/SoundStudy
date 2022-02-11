@@ -22,7 +22,14 @@
 
 .individual-no-song-img {
     float: right;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    left: 25px;
+    top: 30px;
+    background-color: rgb(215, 210, 219);
+    border-radius: 5px;
     padding: 30px;
-    margin-right: 50px;
+    margin-right: 80px;
     margin-bottom: 40px;
 }
