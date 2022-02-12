@@ -76,6 +76,13 @@ a.home {
 .dropdown-logout {
     margin-top: 0px;
     padding: 10px 15px 10px 15px;
+    background-color: #ff5500;
+    color: white;
+    border: 1px solid #ff5500;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    width: fit-content;
+    font-size: 15px;
 }
 
 ul {

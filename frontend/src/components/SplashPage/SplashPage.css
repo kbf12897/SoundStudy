@@ -56,4 +56,11 @@ h2 {
     border-radius: 5px;
     text-decoration: none;
     margin-left: 180px;
+    background-color: #ff5500;
+    color: white;
+    border: 1px solid #ff5500;
+    border-radius: 5px;
+    width: fit-content;
+    margin-top: 50px;
+    font-size: 15px;
 }

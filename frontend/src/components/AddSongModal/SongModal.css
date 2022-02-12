@@ -36,9 +36,17 @@ label {
 }
 
 .add-song-button {
-    margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
+    background-color: #ff5500;
+    color: white;
+    border: 1px solid #ff5500;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    width: fit-content;
+    margin-top: 50px;
+    font-size: 15px;
+    margin-left: 100px;
 }
 
 h3 {
