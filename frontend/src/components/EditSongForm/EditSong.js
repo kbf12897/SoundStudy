@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { editSong } from "../../store/songs";
 import "./EditSongModal.css";
 
-function EditSong() {
+function EditSong({ onClose }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const { songId } = useParams();
