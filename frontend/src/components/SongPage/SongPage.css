@@ -33,3 +33,25 @@
     margin-right: 80px;
     margin-bottom: 40px;
 }
+
+.comment-button {
+    background-color: #ff5500;
+    color: white;
+    border: 1px solid #ff5500;
+    border-radius: 5px;
+    padding: 10px 40px 10px 40px;
+    width: fit-content;
+    margin-top: 50px;
+    font-size: 15px;
+}
+
+.delete-song {
+    background-color: #ff5500;
+    color: white;
+    border: 1px solid #ff5500;
+    border-radius: 5px;
+    padding: 10px 20px 10px 20px;
+    width: fit-content;
+    margin-top: 50px;
+    font-size: 15px;
+}

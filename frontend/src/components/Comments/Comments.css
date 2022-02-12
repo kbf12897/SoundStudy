@@ -97,3 +97,26 @@
     margin-left: 10px;
     cursor: pointer;
 }
+
+.delete-comment-button {
+    background-color: #ff5500;
+    color: white;
+    border: 1px solid #ff5500;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    width: fit-content;
+    margin-top: 50px;
+    font-size: 15px;
+}
+
+.edit-comment-button {
+    background-color: #ff5500;
+    color: white;
+    border: 1px solid #ff5500;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    width: fit-content;
+    margin-top: 50px;
+    font-size: 15px;
+    margin-left: 145px;
+}
