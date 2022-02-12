@@ -23,17 +23,34 @@ function Navigation({ isLoaded }) {
         );
     }
 
+    let homeButton;
+    if (sessionUser) {
+        homeButton = (
+            <NavLink className={"home"} exact to="/user-main">
+                <img
+                    className="home-button"
+                    src="https://upload.wikimedia.org/wikipedia/en/2/23/Lofi_girl_logo.jpg"
+                />
+                <span>Sound Study</span>
+            </NavLink>
+        );
+    } else {
+        homeButton = (
+            <NavLink className={"home"} exact to="/">
+                <img
+                    className="home-button"
+                    src="https://upload.wikimedia.org/wikipedia/en/2/23/Lofi_girl_logo.jpg"
+                />
+                <span>Sound Study</span>
+            </NavLink>
+        );
+    }
+
     return (
         <div className="nav-bar">
             <ul>
                 <li className="nav-links">
-                    <NavLink className={"home"} exact to="/user-main">
-                        <img
-                            className="home-button"
-                            src="https://upload.wikimedia.org/wikipedia/en/2/23/Lofi_girl_logo.jpg"
-                        />
-                        <span>Sound Study</span>
-                    </NavLink>
+                    {homeButton}
                     {isLoaded && sessionLinks}
                 </li>
             </ul>
