@@ -63,7 +63,7 @@
     width: fit-content;
 }
 
-.play-button {
+.main-play-button {
     margin: 0 auto;
     border-style: solid;
     border-width: 20px 0 20px 40px;
@@ -71,6 +71,6 @@
     margin-bottom: 20px;
 }
 
-.play-button:hover {
+.main-play-button:hover {
     opacity: 80%;
 }

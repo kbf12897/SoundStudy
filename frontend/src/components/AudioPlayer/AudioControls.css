@@ -1,0 +1,9 @@
+.pause-play {
+    background-color: orange;
+    margin-bottom: 50px;
+}
+
+.play-button,
+.pause-button {
+    color: orange;
+}

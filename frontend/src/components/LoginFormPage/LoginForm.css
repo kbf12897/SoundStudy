@@ -22,7 +22,7 @@ label {
     margin-bottom: 10px;
 }
 
-button {
+.signin-button {
     background-color: #ff5500;
     color: white;
     border: 1px solid #ff5500;

@@ -41,7 +41,7 @@ function MainPage() {
                                 />
                             </NavLink>
                             <div>{title}</div>
-                            <div className="play-button"></div>
+                            <div className="main-play-button"></div>
                         </div>
                     );
                 })}

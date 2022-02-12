@@ -8,6 +8,7 @@ import SongPage from "./components/SongPage";
 import MainPage from "./components/MainPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import AudioPlayer from "./components/AudioPlayer";
 
 function App() {
     const dispatch = useDispatch();
@@ -18,6 +19,7 @@ function App() {
 
     return (
         <>
+            <AudioPlayer />
             <Navigation isLoaded={isLoaded} />
             {isLoaded && (
                 <Switch>
