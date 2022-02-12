@@ -7,6 +7,7 @@ import {
     editComment,
     deleteComment,
 } from "../../store/comments";
+import EditCommentModal from "../EditCommentForm";
 import "./Comments.css";
 
 function Comments() {
@@ -38,19 +39,19 @@ function Comments() {
         return await dispatch(addComment(payload));
     };
 
-    //edit comment handleSubmit
-    const editCommentHandleSubmit = async (e) => {
-        e.preventDefault();
+    // //edit comment handleSubmit
+    // const editCommentHandleSubmit = async (e) => {
+    //     e.preventDefault();
 
-        let payload = {
-            // commentId,
-            userId,
-            songId,
-            commentBody,
-        };
+    //     let payload = {
+    //         // commentId,
+    //         userId,
+    //         songId,
+    //         commentBody,
+    //     };
 
-        return await dispatch(editComment(payload));
-    };
+    //     return await dispatch(editComment(payload));
+    // };
 
     const handleDelete = (songId, commentId) => {
         const payload = {
@@ -76,7 +77,7 @@ function Comments() {
                     <div className="comment-user">{username}</div>
                     <li key={comment.id} className="comment">
                         {comment.commentBody}
-                        <button className="edit-comment-button">edit</button>
+                        <EditCommentModal props={{ comment }} />
                         <button
                             onClick={() =>
                                 handleDelete(comment.songId, comment.id)
