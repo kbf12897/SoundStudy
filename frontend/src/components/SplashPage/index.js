@@ -31,7 +31,7 @@ function SplashPage() {
                         className="demo-user"
                         onClick={() => handleDemo(demoUser)}
                     >
-                        Demo user
+                        Demo
                     </button>
                 </div>
             </div>
