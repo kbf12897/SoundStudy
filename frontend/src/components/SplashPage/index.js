@@ -1,7 +1,19 @@
 import { NavLink } from "react-router-dom";
+import { login } from "../../store/session";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "./SplashPage.css";
 
 function SplashPage() {
+    const demoUser = { credential: "Demo-lition", password: "password" };
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const handleDemo = (demo) => {
+        dispatch(login(demo));
+        history.push("/user-main");
+    };
+
     return (
         <div className="spash-main">
             <img
@@ -15,6 +27,12 @@ function SplashPage() {
                     <NavLink className={"splash-signup"} to="/signup">
                         Signup for free
                     </NavLink>
+                    <button
+                        className="demo-user"
+                        onClick={() => handleDemo(demoUser)}
+                    >
+                        Demo user
+                    </button>
                 </div>
             </div>
         </div>

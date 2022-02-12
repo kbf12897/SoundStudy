@@ -31,6 +31,7 @@ button {
     width: fit-content;
     margin-top: 50px;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .right-side-login {
