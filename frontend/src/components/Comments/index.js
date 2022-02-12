@@ -27,7 +27,7 @@ function Comments() {
     }, [dispatch]);
 
     //addComment handleSubmit
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
         let payload = {
@@ -36,16 +36,16 @@ function Comments() {
             commentBody,
         };
         setCommentBody("");
-        return await dispatch(addComment(payload));
+        return dispatch(addComment(payload));
     };
 
-    const handleDelete = (songId, commentId) => {
+    const handleDelete = async (songId, commentId) => {
         const payload = {
             songId,
             commentId,
         };
 
-        return dispatch(deleteComment(payload));
+        return await dispatch(deleteComment(payload));
     };
 
     //filters comments for specific song page
