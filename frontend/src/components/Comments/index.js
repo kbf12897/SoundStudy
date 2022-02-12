@@ -39,20 +39,6 @@ function Comments() {
         return await dispatch(addComment(payload));
     };
 
-    // //edit comment handleSubmit
-    // const editCommentHandleSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     let payload = {
-    //         // commentId,
-    //         userId,
-    //         songId,
-    //         commentBody,
-    //     };
-
-    //     return await dispatch(editComment(payload));
-    // };
-
     const handleDelete = (songId, commentId) => {
         const payload = {
             songId,

@@ -5,7 +5,6 @@ import "./EditCommentModal.css";
 
 function EditCommentModal({ props }) {
     const [showModal, setShowModal] = useState(false);
-    console.log("commentCOMMENT", props.comment);
 
     return (
         <>
