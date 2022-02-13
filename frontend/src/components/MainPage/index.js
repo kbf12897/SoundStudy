@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { getSongs } from "../../store/songs";
 import AddSongModal from "../AddSongModal";
+import AudioPlayer from "../AudioPlayer";
 import "./MainPage.css";
 
 function MainPage() {
@@ -11,8 +12,6 @@ function MainPage() {
     const songsObj = useSelector((state) => state.songState.songs);
     const songs = Object.values(songsObj);
     const dispatch = useDispatch();
-
-    const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
         dispatch(getSongs());
@@ -31,17 +30,18 @@ function MainPage() {
             />
             <AddSongModal />
             <div className="song-container">
-                {songs.map(({ id, title }) => {
+                {songs.map((song) => {
                     return (
-                        <div className={`grid${id} grid`}>
-                            <NavLink key={id} to={`/songs/${id}`}>
+                        <div className={`grid${song.id} grid`}>
+                            <NavLink key={song.id} to={`/songs/${song.id}`}>
                                 <img
                                     className="no-song-img"
                                     src="https://cdn2.iconfinder.com/data/icons/audio-files-essential/48/v-30-512.png"
+                                    alt="song-img"
                                 />
                             </NavLink>
-                            <div>{title}</div>
-                            <div className="main-play-button"></div>
+                            <div>{song.title}</div>
+                            <AudioPlayer song={song} />
                         </div>
                     );
                 })}
