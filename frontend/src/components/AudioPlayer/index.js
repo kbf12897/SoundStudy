@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import AudioControls from "./AudioControls";
 import "./AudioPlayer.css";
 
-function AudioPlayer() {
+function Audio() {
     const songsObj = useSelector((state) => state.songState.songs);
     const songs = Object.values(songsObj);
 
@@ -12,16 +12,30 @@ function AudioPlayer() {
 
     const currentSong = songs[playingSongIndex];
 
+    useEffect(() => {
+        setNextSongIndex(() => {
+            if (playingSongIndex + 1 > songs.length - 1) {
+                return 0;
+            } else {
+                return playingSongIndex + 1;
+            }
+        });
+    }, [playingSongIndex, songs.length]);
+
     if (!currentSong) {
         return null;
     } else {
         return (
             <div className="player-container">
                 <div className="current-song">{currentSong.title}</div>
-                <AudioControls />
+                <AudioControls
+                    playingSongIndex={playingSongIndex}
+                    setPlayingSongIndex={setPlayingSongIndex}
+                    nextSongIndex={nextSongIndex}
+                />
             </div>
         );
     }
 }
 
-export default AudioPlayer;
+export default Audio;
