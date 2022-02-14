@@ -5,7 +5,6 @@ import { getSongs } from "../../store/songs";
 import { removeSong } from "../../store/songs";
 import EditSongModal from "../EditSongForm";
 import Comments from "../Comments";
-import AudioPlayer from "../AudioPlayer";
 import "./SongPage.css";
 
 function SongPage() {
@@ -29,23 +28,17 @@ function SongPage() {
     };
 
     // song edit and delete buttons if user is the one who posted
-    let songEditLinks;
-    if (song && userId === song.userId) {
-        songEditLinks = (
-            <div className="edit-delete">
-                <EditSongModal />
-                <button
-                    className="delete-song"
-                    onClick={() => handleDelete(songId)}
-                >
-                    Delete song
-                </button>
-            </div>
-        );
-    } else {
-        songEditLinks = null;
-        return songEditLinks;
-    }
+    const songEditLinks = (
+        <div className="edit-delete">
+            <EditSongModal />
+            <button
+                className="delete-song"
+                onClick={() => handleDelete(songId)}
+            >
+                Delete song
+            </button>
+        </div>
+    );
 
     if (!song) {
         return null;
@@ -59,7 +52,7 @@ function SongPage() {
                             className="individual-no-song-img"
                             src="https://cdn2.iconfinder.com/data/icons/audio-files-essential/48/v-30-512.png"
                         />
-                        {songEditLinks}
+                        {song.userId === userId ? songEditLinks : null}
                     </div>
                     <Comments />
                 </div>
