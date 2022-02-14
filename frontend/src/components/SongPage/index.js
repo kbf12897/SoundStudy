@@ -5,6 +5,7 @@ import { getSongs } from "../../store/songs";
 import { removeSong } from "../../store/songs";
 import EditSongModal from "../EditSongForm";
 import Comments from "../Comments";
+import AudioPlayer from "../AudioPlayer";
 import "./SongPage.css";
 
 function SongPage() {

@@ -10,11 +10,9 @@ function AudioPlayer(props) {
     const [isPlaying, setIsPlaying] = useState(false);
 
     const audioEl = useRef(null);
-    const audioElements = document.querySelectorAll("audio");
 
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
-    console.log(audioElements);
 
     useEffect(() => {
         if (isPlaying) {
@@ -23,10 +21,6 @@ function AudioPlayer(props) {
             audioEl.current.pause();
         }
     });
-
-    useEffect(() => {
-        return;
-    }, [audioElements]);
 
     useEffect(() => {
         setNextSongIndex(() => {
@@ -50,25 +44,21 @@ function AudioPlayer(props) {
         audioEl.current.play();
     };
 
-    if (!audioElements) {
-        return null;
-    } else {
-        return (
-            <div className="buttons-div">
-                <div key={props.song.id}>
-                    <audio ref={audioEl} onEnded={songEnd}>
-                        <source src={`./music/${props.song.url}`}></source>
-                    </audio>
-                    <button
-                        className="pause-play"
-                        onClick={() => playSongHandler(props.song)}
-                    >
-                        <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
-                    </button>
-                </div>
+    return (
+        <div className="buttons-div">
+            <div key={props.song.id}>
+                <audio ref={audioEl} onEnded={songEnd}>
+                    <source src={`./music/${props.song.url}`}></source>
+                </audio>
+                <button
+                    className="pause-play"
+                    onClick={() => playSongHandler(props.song)}
+                >
+                    <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
+                </button>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default AudioPlayer;
