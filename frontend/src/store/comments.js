@@ -85,11 +85,9 @@ const commentReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD:
             newState = { ...state };
-            const comments = {};
             action.comments.forEach((comment) => {
-                comments[comment.id] = comment;
+                newState[comment.id] = comment;
             });
-            newState = { ...state, ...comments };
             return newState;
         case ADD:
             newState = { ...state };
@@ -101,7 +99,8 @@ const commentReducer = (state = {}, action) => {
             return newState;
         case EDIT:
             newState = { ...state };
-            newState[action.commentId] = action.comment;
+            newState[action.comment.id] = action.comment;
+            console.log(newState);
             return newState;
         default:
             return state;
