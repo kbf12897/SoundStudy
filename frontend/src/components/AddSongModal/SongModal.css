@@ -11,6 +11,7 @@
     width: fit-content;
     margin-top: 50px;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .new-song-form {
@@ -47,6 +48,7 @@ label {
     margin-top: 50px;
     font-size: 15px;
     margin-left: 100px;
+    cursor: pointer;
 }
 
 h3 {
