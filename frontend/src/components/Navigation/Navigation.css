@@ -55,6 +55,13 @@ a.home {
     font-size: 15px;
 }
 
+.profile-dropdown {
+    position: absolute;
+    background-color: #1f1e1e;
+    border-radius: 5px;
+    margin-top: -3px;
+}
+
 .profile-dropdown li {
     color: white;
     display: flex;
@@ -62,6 +69,7 @@ a.home {
     align-items: center;
     padding: 5px;
     margin-right: 25px;
+    background-color: #1f1e1e;
 }
 
 .dropdown {
