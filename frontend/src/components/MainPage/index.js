@@ -35,8 +35,8 @@ function MainPage() {
                         <div className={`grid${song.id} grid`}>
                             <NavLink key={song.id} to={`/songs/${song.id}`}>
                                 <img
-                                    className="no-song-img"
-                                    src="https://cdn2.iconfinder.com/data/icons/audio-files-essential/48/v-30-512.png"
+                                    className="song_img"
+                                    src={song.songImg}
                                     alt="song-img"
                                 />
                             </NavLink>
