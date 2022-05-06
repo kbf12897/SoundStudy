@@ -36,16 +36,14 @@
     border-radius: 5px;
 }
 
-.no-song-img {
-    width: 150px;
-    height: 150px;
+.song_img {
+    width: 200px;
+    height: 200px;
     position: relative;
     left: 25px;
     top: 30px;
-    background-color: rgb(215, 210, 219);
     border-radius: 5px;
     cursor: pointer;
-    padding: 30px;
     margin-right: 50px;
     margin-bottom: 40px;
 }

@@ -49,8 +49,8 @@ function SongPage() {
                     <div className="song-info">
                         <h3 className="song-title">{song.title}</h3>
                         <img
-                            className="individual-no-song-img"
-                            src="https://cdn2.iconfinder.com/data/icons/audio-files-essential/48/v-30-512.png"
+                            className="individual-song-img"
+                            src={song.songImg}
                         />
                         {song.userId === userId ? songEditLinks : null}
                     </div>

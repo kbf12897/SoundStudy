@@ -15,6 +15,9 @@ module.exports = {
             playlistId: {
                 type: Sequelize.INTEGER,
             },
+            songImg: {
+                type: Sequelize.STRING,
+            },
             url: {
                 allowNull: false,
                 type: Sequelize.STRING,
