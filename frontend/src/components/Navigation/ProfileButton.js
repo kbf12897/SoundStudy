@@ -40,8 +40,9 @@ function ProfileButton({ user }) {
             <div className="dropdown">
                 {showMenu && (
                     <ul className="profile-dropdown">
-                        <li>{user.username}</li>
-                        <li>{user.email}</li>
+                        <li>
+                            <button className="user-page-button">Profile</button>
+                        </li>
                         <li>
                             <button
                                 className="dropdown-logout"
