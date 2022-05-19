@@ -15,7 +15,7 @@ const UserPage = () => {
     }, [dispatch]);
 
     return (
-        <div>
+        <div className='top-level'>
             <div className='content-container'>
                 <div className='header-img'>
                     HEADER IMG
