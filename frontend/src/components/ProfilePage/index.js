@@ -12,6 +12,8 @@ const UserPage = () => {
     const songs = Object.values(songsObj);
     const dispatch = useDispatch();
 
+    const userSongs = songs.filter(song => song?.userId === sessionUser.id)
+
     useEffect(() => {
         dispatch(getSongs());
     }, [dispatch]);
@@ -26,7 +28,7 @@ const UserPage = () => {
                     PAGE NAVIGATION
                 </div>
                 <div className='user-uploaded-songs'>
-                    {songs.map((song) => {
+                    {userSongs.map((song) => {
                         return (
                             <div className={song.id}>
                                 <NavLink to={`/songs/${song.id}`}>
