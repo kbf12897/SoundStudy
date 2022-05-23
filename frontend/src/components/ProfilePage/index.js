@@ -30,7 +30,7 @@ const UserPage = () => {
                 <div className='user-uploaded-songs'>
                     {userSongs.map((song) => {
                         return (
-                            <div className={song.id}>
+                            <div key={song.id} className='songs'>
                                 <NavLink to={`/songs/${song.id}`}>
                                     <img
                                         className='user-page-song-img'
