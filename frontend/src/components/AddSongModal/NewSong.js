@@ -10,12 +10,16 @@ function AddSong() {
 
     const [title, setTitle] = useState("");
     const [url, setUrl] = useState("");
+    const [playlistId, setPlaylistId] = useState('');
+    const [songImg, setSongImg] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         let payload = {
             userId,
+            playlistId,
+            songImg,
             url,
             title,
         };
