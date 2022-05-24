@@ -19,7 +19,7 @@ router.post(
     asyncHandler(async function (req, res) {
         const { userId, playlistId, title } = req.body;
         const songUrl = await singlePublicFileUpload(req.file)
-        const song = await db.Song.create({ userId, playlistId, title, songUrl });
+        const song = await db.Song.create({ userId, playlistId, title, songImg, songUrl });
         return res.json(song);
     })
 );
