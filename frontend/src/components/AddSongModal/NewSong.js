@@ -9,9 +9,9 @@ function AddSong() {
     const userId = sessionUser.id;
 
     const [title, setTitle] = useState("");
-    const [url, setUrl] = useState("");
     const [playlistId, setPlaylistId] = useState('');
-    const [songImg, setSongImg] = useState('');
+    const [url, setUrl] = useState(null);
+    const [songImg, setSongImg] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,6 +27,11 @@ function AddSong() {
         return await dispatch(addSong(payload));
     };
 
+    const updateFile = (e) => {
+        const file = e.target.files[0];
+        if (file) setUrl(file);
+    }
+
     return (
         <form className="new-song-form" onSubmit={handleSubmit}>
             <h3>Share your favorites</h3>
@@ -41,9 +46,8 @@ function AddSong() {
             <label>Song Url</label>
             <input
                 className="song-url"
-                type="text"
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
+                type="file"
+                onChange={updateFile}
                 required
             />
             <button className="add-song-button" type="submit">

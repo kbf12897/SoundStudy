@@ -1,6 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const aws = require('../../awsS3');
+const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 const db = require("../../db/models");
 
 const router = express.Router();
@@ -15,10 +15,10 @@ router.get(
 
 router.post(
     "/",
-    aws.singleMulterUpload('song'),
+    singleMulterUpload('song'),
     asyncHandler(async function (req, res) {
         const { userId, playlistId, title } = req.body;
-        const songUrl = await aws.singlePublicFileUpload(req.file)
+        const songUrl = await singlePublicFileUpload(req.file)
         const song = await db.Song.create({ userId, playlistId, title, songUrl });
         return res.json(song);
     })
