@@ -2,6 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 const db = require("../../db/models");
+const { setTokenCookie } = require('../../utils/auth')
 
 const router = express.Router();
 
@@ -18,8 +19,11 @@ router.post(
     singleMulterUpload('url'),
     asyncHandler(async function (req, res) {
         const { userId, playlistId, songImg, title } = req.body;
-        const songUrl = await singlePublicFileUpload(req.file)
-        const song = await db.Song.create({ userId, playlistId, songImg, songUrl, title });
+        const url = await singlePublicFileUpload(req.file);
+        const song = await db.Song.create({ userId, playlistId, songImg, url, title });
+
+        setTokenCookie(res, song);
+
         return res.json({song});
     })
 );
