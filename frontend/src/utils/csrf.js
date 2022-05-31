@@ -1,9 +1,5 @@
 import Cookies from 'js-cookie';
 
-// call this to get the "XSRF-TOKEN" cookie, should only be used in development
-export function restoreCSRF() {
-  return csrfFetch('/api/csrf/restore');
-}
 
 export async function csrfFetch(url, options = {}) {
   // set options.method to 'GET' if there is no method
@@ -12,14 +8,14 @@ export async function csrfFetch(url, options = {}) {
   options.headers = options.headers || {};
 
   // if the options.method is not 'GET', then set the "Content-Type" header to
-    // "application/json", and set the "XSRF-TOKEN" header to the value of the
-    // "XSRF-TOKEN" cookie
+  // "application/json", and set the "XSRF-TOKEN" header to the value of the
+  // "XSRF-TOKEN" cookie
   if (options.method.toUpperCase() !== "GET") {
     if (options.headers["Content-Type"] === "multipart/form-data") {
       delete options.headers["Content-Type"];
     } else {
       options.headers["Content-Type"] =
-        options.headers["Content-Type"] || "application/json";
+      options.headers["Content-Type"] || "application/json";
     }
     options.headers["XSRF-Token"] = Cookies.get("XSRF-TOKEN");
   }
@@ -27,10 +23,15 @@ export async function csrfFetch(url, options = {}) {
   const res = await window.fetch(url, options);
 
   // if the response status code is 400 or above, then throw an error with the
-    // error being the response
+  // error being the response
   if (res.status >= 400) throw res;
 
   // if the response status code is under 400, then return the response to the
-    // next promise chain
+  // next promise chain
   return res;
+}
+
+// call this to get the "XSRF-TOKEN" cookie, should only be used in development
+export function restoreCSRF() {
+  return csrfFetch('/api/csrf/restore');
 }

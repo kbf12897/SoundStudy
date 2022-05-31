@@ -29,6 +29,7 @@ function AddSong() {
 
     const updateFile = (e) => {
         const file = e.target.files[0];
+        console.log('HELLO', file)
         if (file) setUrl(file);
     }
 
