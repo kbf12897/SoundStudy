@@ -10,6 +10,7 @@ router.get(
     "/",
     asyncHandler(async function (req, res) {
         const songs = await db.Song.findAll();
+        console.log('SONGSSONGS',songs)
         return res.json(songs);
     })
 );

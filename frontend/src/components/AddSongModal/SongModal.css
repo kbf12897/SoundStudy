@@ -21,11 +21,12 @@
     align-items: center;
     justify-content: center;
     width: 400px;
-    height: 400px;
+    height: 500px;
 }
 
 .song-name,
-.song-url {
+.song-url,
+.song-img {
     background-color: white;
     border-radius: 5px;
     width: 200px;

@@ -51,10 +51,11 @@ export const addSong = (payload) => async (dispatch) => {
     formData.append('userId', userId);
     formData.append('playlistId', playlistId);
     formData.append('title', title);
+    formData.append('songImg', songImg)
 
     if (url) formData.append('url', url);
 
-    const res = await csrfFetch("/api/songs", {
+    const response = await csrfFetch("/api/songs", {
         method: "POST",
         headers: {
             "Content-Type": "multipart/form-data"
@@ -62,8 +63,9 @@ export const addSong = (payload) => async (dispatch) => {
         body: formData,
     });
 
-    const data = await res.json();
+    const data = await response.json();
     dispatch(add(data))
+    return data;
 };
 
 export const removeSong = (songId) => async (dispatch) => {
@@ -107,8 +109,9 @@ const songReducer = (state = initialState, action) => {
             newState.songs = allSongs;
             return newState;
         case ADD:
-            newState = { ...state, songs: { ...state.songs } };
+            newState = { ...state };
             newState.songs[action.song.id] = action.song;
+            console.log('NEWSTATE', newState)
             return newState;
         case DELETE:
             newState = { ...state };

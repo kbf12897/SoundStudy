@@ -11,7 +11,7 @@ function AddSong() {
     const [title, setTitle] = useState("");
     const [playlistId, setPlaylistId] = useState(0);
     const [url, setUrl] = useState(null);
-    const [songImg, setSongImg] = useState(null);
+    const [songImg, setSongImg] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,6 +44,13 @@ function AddSong() {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
+            />
+            <label>Song Image</label>
+            <input
+                className="song-img"
+                type='text'
+                value={songImg}
+                onChange={(e) => setSongImg(e.target.value)}
             />
             <label>Upload Song</label>
             <input
