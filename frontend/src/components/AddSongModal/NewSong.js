@@ -9,7 +9,7 @@ function AddSong() {
     const userId = sessionUser.id;
 
     const [title, setTitle] = useState("");
-    const [playlistId, setPlaylistId] = useState('');
+    const [playlistId, setPlaylistId] = useState(0);
     const [url, setUrl] = useState(null);
     const [songImg, setSongImg] = useState(null);
 
@@ -44,7 +44,7 @@ function AddSong() {
                 onChange={(e) => setTitle(e.target.value)}
                 required
             />
-            <label>Song Url</label>
+            <label>Upload Song</label>
             <input
                 className="song-url"
                 type="file"

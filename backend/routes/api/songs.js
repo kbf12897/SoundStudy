@@ -15,7 +15,7 @@ router.get(
 
 router.post(
     "/",
-    singleMulterUpload('song'),
+    singleMulterUpload('url'),
     asyncHandler(async function (req, res) {
         const { userId, playlistId, songImg, title } = req.body;
         const songUrl = await singlePublicFileUpload(req.file)
