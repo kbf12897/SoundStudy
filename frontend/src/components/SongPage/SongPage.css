@@ -20,7 +20,7 @@
     margin-top: 30px;
 }
 
-.individual-song-img {
+.individual-song-img, .no-song-img {
     float: right;
     width: 200px;
     height: 220px;

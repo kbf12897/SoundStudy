@@ -48,10 +48,11 @@ function SongPage() {
                 <div className="song-div">
                     <div className="song-info">
                         <h3 className="song-title">{song.title}</h3>
-                        <img
+                        {song.songImg && <img
                             className="individual-song-img"
                             src={song.songImg}
-                        />
+                        />}
+                        {!song.songImg && <img className="no-song-img" src='https://www.vhv.rs/dpng/d/42-424143_music-note-no-background-hd-png-download.png' alt='song-img'/>}
                         {song.userId === userId ? songEditLinks : null}
                     </div>
                     <Comments />
