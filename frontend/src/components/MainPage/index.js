@@ -34,11 +34,12 @@ function MainPage() {
                     return (
                         <div className={`grid${song.id} grid`}>
                             <NavLink key={song.id} to={`/songs/${song.id}`}>
-                                <img
+                                {!song.songImg && <img className="no-song-img" src='https://www.vhv.rs/dpng/d/42-424143_music-note-no-background-hd-png-download.png' alt='song-img'/>}
+                                {song.songImg && <img
                                     className="song_img"
                                     src={song.songImg}
                                     alt="song-img"
-                                />
+                                />}
                             </NavLink>
                             <div>{song.title}</div>
                             <AudioPlayer song={song} />

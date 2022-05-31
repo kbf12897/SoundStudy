@@ -36,7 +36,7 @@
     border-radius: 5px;
 }
 
-.song_img {
+.song_img, .no-song-img {
     width: 200px;
     height: 200px;
     position: relative;
