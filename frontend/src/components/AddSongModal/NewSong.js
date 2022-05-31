@@ -24,13 +24,15 @@ function AddSong() {
             title,
         };
 
+        console.log('PAYLOOOAAADDDD',payload)
+
         return await dispatch(addSong(payload));
     };
 
     const updateFile = (e) => {
         const file = e.target.files[0];
-        console.log('HELLO', file)
-        if (file) setUrl(file);
+        console.log('FIIIIIIILLLLLLEEEEE', file)
+        if (file) setUrl(file.name);
     }
 
     return (
@@ -48,7 +50,7 @@ function AddSong() {
             <input
                 className="song-url"
                 type="file"
-                onChange={updateFile}
+                onChange={(e) => updateFile(e)}
                 required
             />
             <button className="add-song-button" type="submit">
