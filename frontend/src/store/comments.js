@@ -1,4 +1,4 @@
-import { csrfFetch } from "./csrf";
+import { csrfFetch } from "../utils/csrf";
 
 const LOAD = "/songs/:songId/comments/LOAD";
 const ADD = "/songs/:songId/comments/ADD";
