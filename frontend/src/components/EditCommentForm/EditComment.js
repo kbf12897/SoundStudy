@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { editComment } from "../../store/comments";
 import "./EditCommentModal.css";
 
-function EditComment({ props }) {
+function EditComment({ props, modalClose }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const { songId } = useParams();
@@ -24,7 +24,8 @@ function EditComment({ props }) {
             commentBody,
         };
 
-        return dispatch(editComment(payload));
+        dispatch(editComment(payload));
+        return modalClose.setShowModal(false);
     };
 
     return (

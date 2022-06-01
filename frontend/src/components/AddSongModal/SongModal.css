@@ -24,12 +24,13 @@
     height: 500px;
 }
 
+
 .song-name,
 .song-url,
 .song-img {
     background-color: white;
     border-radius: 5px;
-    width: 200px;
+    width: 300px;
 }
 
 label {

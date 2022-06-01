@@ -120,3 +120,31 @@
     font-size: 15px;
     margin-left: 145px;
 }
+
+.confirm-delete-button {
+    background-color: #ff5500;
+    color: white;
+    border: 1px solid #ff5500;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    width: fit-content;
+    font-size: 15px;
+    margin: 10px;
+}
+
+.confirm-delete-container {
+    background-color: white;
+    border: 1px solid black;
+    position: absolute;
+    margin: 0 auto;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.confirm-delete-sentence {
+    background-color: white;
+}
