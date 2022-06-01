@@ -22,8 +22,6 @@ router.post(
         const url = await singlePublicFileUpload(req.file);
         const song = await db.Song.create({ userId, playlistId, songImg, url, title });
 
-        setTokenCookie(res, song);
-
         return res.json(song);
     })
 );

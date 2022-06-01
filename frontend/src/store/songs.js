@@ -63,9 +63,9 @@ export const addSong = (payload) => async (dispatch) => {
         body: formData,
     });
 
-    const data = await response.json();
-    dispatch(add(data))
-    return data;
+    const song = await response.json();
+    dispatch(add(song))
+    return song;
 };
 
 export const removeSong = (songId) => async (dispatch) => {
@@ -105,6 +105,7 @@ const songReducer = (state = {}, action) => {
             return newState;
         case ADD:
             newState = { ...state };
+            console.log('NEWSTATE', newState)
             newState[action.song.id] = action.song;
             return newState;
         case DELETE:
