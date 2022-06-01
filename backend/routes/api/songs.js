@@ -10,7 +10,6 @@ router.get(
     "/",
     asyncHandler(async function (req, res) {
         const songs = await db.Song.findAll();
-        console.log('SONGSSONGS',songs)
         return res.json(songs);
     })
 );
@@ -25,7 +24,7 @@ router.post(
 
         setTokenCookie(res, song);
 
-        return res.json({song});
+        return res.json(song);
     })
 );
 

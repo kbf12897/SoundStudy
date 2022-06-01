@@ -9,7 +9,7 @@ import "./MainPage.css";
 
 function MainPage() {
     const sessionUser = useSelector((state) => state.session);
-    const songsObj = useSelector((state) => state.songState.songs);
+    const songsObj = useSelector((state) => state.songState);
     const songs = Object.values(songsObj);
     const dispatch = useDispatch();
 

@@ -93,25 +93,19 @@ export const editSong = (payload) => async (dispatch) => {
     }
 };
 
-const initialState = {
-    songs: [],
-};
 
-const songReducer = (state = initialState, action) => {
+const songReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case LOAD:
             newState = { ...state };
-            const allSongs = {};
             action.songs.forEach((song) => {
-                allSongs[song.id] = song;
+                newState[song.id] = song;
             });
-            newState.songs = allSongs;
             return newState;
         case ADD:
             newState = { ...state };
-            newState.songs[action.song.id] = action.song;
-            console.log('NEWSTATE', newState)
+            newState[action.song.id] = action.song;
             return newState;
         case DELETE:
             newState = { ...state };
@@ -119,7 +113,7 @@ const songReducer = (state = initialState, action) => {
             return newState;
         case EDIT:
             newState = { ...state };
-            newState.songs[action.song.id] = action.song;
+            newState[action.song.id] = action.song;
             return newState;
         default:
             return state;

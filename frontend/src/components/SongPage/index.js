@@ -9,7 +9,7 @@ import "./SongPage.css";
 
 function SongPage() {
     const { songId } = useParams();
-    const song = useSelector((state) => state.songState.songs[songId]);
+    const song = useSelector((state) => state.songState[songId]);
     const sessionUser = useSelector((state) => state.session.user);
     const userId = sessionUser.id;
 

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import "./AudioPlayer.css";
 
 function AudioPlayer(props) {
-    const songsObj = useSelector((state) => state.songState.songs);
+    const songsObj = useSelector((state) => state.songState);
     const songs = Object.values(songsObj);
     const [isPlaying, setIsPlaying] = useState(false);
 

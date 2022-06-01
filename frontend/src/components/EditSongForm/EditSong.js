@@ -8,7 +8,7 @@ function EditSong({ onClose }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const { songId } = useParams();
-    const song = useSelector((state) => state.songState.songs[songId]);
+    const song = useSelector((state) => state.songState[songId]);
     const userId = sessionUser.id;
 
     const [title, setTitle] = useState(song.title);

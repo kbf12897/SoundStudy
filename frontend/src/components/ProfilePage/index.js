@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom';
 
 const UserPage = () => {
     const sessionUser = useSelector(state => state.session.user);
-    const songsObj = useSelector(state => state.songState.songs);
+    const songsObj = useSelector(state => state.songState);
     const songs = Object.values(songsObj);
     const dispatch = useDispatch();
 
