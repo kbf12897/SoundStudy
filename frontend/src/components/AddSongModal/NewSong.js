@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { addSong } from "../../store/songs";
 import "./SongModal.css";
 
-function AddSong() {
+function AddSong({modalClose}) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const userId = sessionUser.id;
@@ -27,7 +27,11 @@ function AddSong() {
         };
 
 
-        return await dispatch(addSong(payload));
+        const newSong = await dispatch(addSong(payload));
+
+        if (newSong?.id) return modalClose.setShowModal(false);
+
+
     };
 
     const updateFile = (e) => {

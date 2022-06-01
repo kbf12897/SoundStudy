@@ -13,7 +13,7 @@ function AddSongModal() {
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <NewSong />
+                    <NewSong modalClose={{setShowModal}}/>
                 </Modal>
             )}
         </>
