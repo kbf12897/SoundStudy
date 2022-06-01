@@ -16,7 +16,7 @@ function EditSongModal() {
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditSong />
+                    <EditSong modalClose={{setShowModal}}/>
                 </Modal>
             )}
         </>

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { editSong } from "../../store/songs";
 import "./EditSongModal.css";
 
-function EditSong({ onClose }) {
+function EditSong({ modalClose }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const { songId } = useParams();
@@ -24,7 +24,9 @@ function EditSong({ onClose }) {
             title,
         };
 
-        return await dispatch(editSong(payload));
+        await dispatch(editSong(payload));
+
+        return modalClose.setShowModal(false);
     };
 
     return (
@@ -36,14 +38,6 @@ function EditSong({ onClose }) {
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                required
-            />
-            <label>Song Url</label>
-            <input
-                className="edit-song-url"
-                type="text"
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
                 required
             />
             <button className="edit-song-button" type="submit">
