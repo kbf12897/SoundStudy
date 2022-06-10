@@ -12,7 +12,7 @@ function EditCommentModal({ props }) {
     return (
         <>
             {sessionUser.id === props.comment.userId && <button
-                className="edit-modal-button"
+                className="edit-comment-modal-button"
                 onClick={() => setShowModal(true)}
             >
                 edit
