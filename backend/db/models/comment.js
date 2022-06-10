@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             userId: DataTypes.INTEGER,
             songId: DataTypes.INTEGER,
             commentBody: DataTypes.STRING,
+            commentOwner: DataTypes.STRING,
         },
         {}
     );

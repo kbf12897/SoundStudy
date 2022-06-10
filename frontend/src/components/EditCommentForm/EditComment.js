@@ -7,6 +7,7 @@ import "./EditCommentModal.css";
 function EditComment({ props, modalClose }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
+    const commentOwner = sessionUser.username;
     const { songId } = useParams();
     const userId = sessionUser.id;
     const commentId = props.id;
@@ -22,6 +23,7 @@ function EditComment({ props, modalClose }) {
             userId,
             songId,
             commentBody,
+            commentOwner
         };
 
         dispatch(editComment(payload));

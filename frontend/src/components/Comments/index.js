@@ -13,7 +13,7 @@ import "./Comments.css";
 function Comments() {
     const { songId } = useParams();
     const sessionUser = useSelector((state) => state.session.user);
-    const username = sessionUser.username;
+    const commentOwner = sessionUser.username;
     const userId = sessionUser.id;
     const commentsObj = useSelector((state) => state.commentState);
     const comments = Object.values(commentsObj);
@@ -35,6 +35,7 @@ function Comments() {
             userId,
             songId,
             commentBody,
+            commentOwner
         };
         setCommentBody("");
         return dispatch(addComment(payload));
@@ -66,7 +67,7 @@ function Comments() {
         songComments = filteredComments.map((comment) => {
             return (
                 <div className="comment-container">
-                    <div className="comment-user">{username}</div>
+                    <div className="comment-user">{commentOwner}</div>
                     <li key={comment.id} className="comment">
                         {comment.commentBody}
                         <EditCommentModal props={{ comment }} />
