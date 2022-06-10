@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { getSongs } from "../../store/songs";
+import ViewSong from "./ViewSong";
 import AddSongModal from "../AddSongModal";
-import AudioPlayer from "../AudioPlayer";
 import "./MainPage.css";
 
 function MainPage() {
@@ -32,18 +32,7 @@ function MainPage() {
             <div className="song-container">
                 {songs.map((song) => {
                     return (
-                        <div className={`grid${song.id} grid`}>
-                            <NavLink key={song.id} to={`/songs/${song.id}`}>
-                                {!song.songImg && <img className="no-song-img" src='https://www.vhv.rs/dpng/d/42-424143_music-note-no-background-hd-png-download.png' alt='song-img'/>}
-                                {song.songImg && <img
-                                    className="song_img"
-                                    src={song.songImg}
-                                    alt="song-img"
-                                />}
-                            </NavLink>
-                            <div>{song.title}</div>
-                            <AudioPlayer song={song} />
-                        </div>
+                        <ViewSong song={song} />
                     );
                 })}
             </div>
