@@ -74,6 +74,7 @@
 .comment-user {
     background-color: white;
     color: rgb(179, 176, 176);
+    margin-bottom: 30px;
 }
 
 .comment {
@@ -93,7 +94,6 @@
 .edit-comment-button,
 .delete-comment-button {
     text-align: center;
-    padding: 5px 10px 5px 10px;
     margin-left: 10px;
     cursor: pointer;
 }
@@ -105,7 +105,17 @@
     border-radius: 5px;
     padding: 5px 10px 5px 10px;
     width: fit-content;
-    margin-top: 50px;
+    font-size: 15px;
+}
+
+.edit-modal-button {
+    background-color: #ff5500;
+    color: white;
+    border: 1px solid #ff5500;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    width: fit-content;
+    margin: 0;
     font-size: 15px;
 }
 
@@ -116,7 +126,6 @@
     border-radius: 5px;
     padding: 5px 10px 5px 10px;
     width: fit-content;
-    margin-top: 50px;
     font-size: 15px;
     margin-left: 145px;
 }
