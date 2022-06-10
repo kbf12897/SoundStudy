@@ -9,6 +9,7 @@ import {
 } from "../../store/comments";
 import EditCommentModal from "../EditCommentForm";
 import "./Comments.css";
+import ViewComment from "./viewComment";
 
 function Comments() {
     const { songId } = useParams();
@@ -20,7 +21,7 @@ function Comments() {
 
     const dispatch = useDispatch();
     const [commentBody, setCommentBody] = useState("");
-    const [confirmDeleteModal, setConfirmDeleteModal] = useState(false)
+    // const [confirmDeleteModal, setConfirmDeleteModal] = useState(false)
 
     //useEffect for getComments
     useEffect(() => {
@@ -41,19 +42,19 @@ function Comments() {
         return dispatch(addComment(payload));
     };
 
-    const handleDelete = async (songId, commentId) => {
-        const payload = {
-            songId,
-            commentId,
-        };
+    // const handleDelete = async (songId, commentId) => {
+    //     const payload = {
+    //         songId,
+    //         commentId,
+    //     };
 
-        await dispatch(deleteComment(payload));
-        setConfirmDeleteModal(false);
-    };
+    //     await dispatch(deleteComment(payload));
+    //     setConfirmDeleteModal(false);
+    // };
 
-    const confirmDelete = async (comment) => {
-        setConfirmDeleteModal(true);
-    }
+    // const confirmDelete = async (comment) => {
+    //     setConfirmDeleteModal(true);
+    // }
 
     //filters comments for specific song page
     const filteredComments = comments.filter((comment) => {
@@ -67,26 +68,7 @@ function Comments() {
         songComments = filteredComments.map((comment) => {
             return (
                 <div className="comment-container">
-                    <div className="comment-user">{commentOwner}</div>
-                    <li key={comment.id} className="comment">
-                        {comment.commentBody}
-                        <EditCommentModal props={{ comment }} />
-                        {confirmDeleteModal &&
-                            <div className="confirm-delete-container">
-                                <div className="confirm-delete-sentence">Are you sure you want to delete this comment?</div>
-                                <button className='confirm-delete-button' onClick={() => handleDelete(comment.songId, comment.id)}>Confirm</button>
-                            </div>
-                        }
-                        <button
-                            onClick={() =>
-                                confirmDelete(comment)
-                            }
-                            className="delete-comment-button"
-                        >
-                            delete
-                        </button>
-                    </li>
-                    <div className="comment-buttons"></div>
+                    <ViewComment comment={comment} />
                 </div>
             );
         });
