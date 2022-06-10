@@ -4,9 +4,10 @@ import { useParams } from "react-router-dom";
 import { editComment } from "../../store/comments";
 import "./EditCommentModal.css";
 
-function EditComment({ props }) {
+function EditComment({ props, modalClose }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
+    const commentOwner = sessionUser.username;
     const { songId } = useParams();
     const userId = sessionUser.id;
     const commentId = props.id;
@@ -22,9 +23,11 @@ function EditComment({ props }) {
             userId,
             songId,
             commentBody,
+            commentOwner
         };
 
-        return dispatch(editComment(payload));
+        dispatch(editComment(payload));
+        return modalClose.setShowModal(false);
     };
 
     return (

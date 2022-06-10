@@ -9,17 +9,19 @@ import {
 } from "../../store/comments";
 import EditCommentModal from "../EditCommentForm";
 import "./Comments.css";
+import ViewComment from "./viewComment";
 
 function Comments() {
     const { songId } = useParams();
     const sessionUser = useSelector((state) => state.session.user);
-    const username = sessionUser.username;
+    const commentOwner = sessionUser.username;
     const userId = sessionUser.id;
     const commentsObj = useSelector((state) => state.commentState);
     const comments = Object.values(commentsObj);
 
     const dispatch = useDispatch();
     const [commentBody, setCommentBody] = useState("");
+    // const [confirmDeleteModal, setConfirmDeleteModal] = useState(false)
 
     //useEffect for getComments
     useEffect(() => {
@@ -34,19 +36,25 @@ function Comments() {
             userId,
             songId,
             commentBody,
+            commentOwner
         };
         setCommentBody("");
         return dispatch(addComment(payload));
     };
 
-    const handleDelete = async (songId, commentId) => {
-        const payload = {
-            songId,
-            commentId,
-        };
+    // const handleDelete = async (songId, commentId) => {
+    //     const payload = {
+    //         songId,
+    //         commentId,
+    //     };
 
-        return await dispatch(deleteComment(payload));
-    };
+    //     await dispatch(deleteComment(payload));
+    //     setConfirmDeleteModal(false);
+    // };
+
+    // const confirmDelete = async (comment) => {
+    //     setConfirmDeleteModal(true);
+    // }
 
     //filters comments for specific song page
     const filteredComments = comments.filter((comment) => {
@@ -60,20 +68,7 @@ function Comments() {
         songComments = filteredComments.map((comment) => {
             return (
                 <div className="comment-container">
-                    <div className="comment-user">{username}</div>
-                    <li key={comment.id} className="comment">
-                        {comment.commentBody}
-                        <EditCommentModal props={{ comment }} />
-                        <button
-                            onClick={() =>
-                                handleDelete(comment.songId, comment.id)
-                            }
-                            className="delete-comment-button"
-                        >
-                            delete
-                        </button>
-                    </li>
-                    <div className="comment-buttons"></div>
+                    <ViewComment comment={comment} />
                 </div>
             );
         });

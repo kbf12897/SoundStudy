@@ -30,8 +30,6 @@ function AddSong({modalClose}) {
         const newSong = await dispatch(addSong(payload));
 
         if (newSong?.id) return modalClose.setShowModal(false);
-
-
     };
 
     const updateFile = (e) => {

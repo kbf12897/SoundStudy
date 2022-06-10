@@ -16,7 +16,7 @@ function EditCommentModal({ props }) {
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <EditComment props={props.comment} />
+                    <EditComment props={props.comment} modalClose={setShowModal} />
                 </Modal>
             )}
         </>
