@@ -20,7 +20,7 @@ const ViewComment = ({ comment }) => {
     };
 
     const confirmDelete = async (comment) => {
-        setConfirmDeleteModal(true);
+        setConfirmDeleteModal(!confirmDeleteModal);
     }
 
     return (
@@ -32,7 +32,7 @@ const ViewComment = ({ comment }) => {
                         <EditCommentModal props={{ comment }} />
                         {confirmDeleteModal &&
                             <div className="confirm-delete-container">
-                                <div className="confirm-delete-sentence">Are you sure you want to delete this comment?</div>
+                                <div className="confirm-delete-sentence">Confirm Delete</div>
                                 <button className='confirm-delete-button' onClick={() => handleDelete(comment.songId, comment.id)}>Confirm</button>
                             </div>
                         }
