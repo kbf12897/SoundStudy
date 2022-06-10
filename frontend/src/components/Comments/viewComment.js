@@ -1,13 +1,13 @@
 import { useState } from "react";
-import EditComment from "../EditCommentForm/EditComment";
 import { deleteComment } from "../../store/comments";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import EditCommentModal from "../EditCommentForm";
 import './Comments.css';
 
 const ViewComment = ({ comment }) => {
     const dispatch = useDispatch();
-    const [confirmDeleteModal, setConfirmDeleteModal] = useState(false)
+    const [confirmDeleteModal, setConfirmDeleteModal] = useState(false);
+    const sessionUser = useSelector((state) => state.session.user);
 
     const handleDelete = async (songId, commentId) => {
         const payload = {
@@ -36,14 +36,14 @@ const ViewComment = ({ comment }) => {
                                 <button className='confirm-delete-button' onClick={() => handleDelete(comment.songId, comment.id)}>Confirm</button>
                             </div>
                         }
-                        <button
+                        {comment.userId === sessionUser.id && <button
                             onClick={() =>
                                 confirmDelete(comment)
                             }
                             className="delete-comment-button"
                         >
                             delete
-                        </button>
+                        </button>}
                     </li>
                     <div className="comment-buttons"></div>
                 </div>

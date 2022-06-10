@@ -4,10 +4,7 @@ import { useParams } from "react-router-dom";
 import {
     addComment,
     getComments,
-    editComment,
-    deleteComment,
 } from "../../store/comments";
-import EditCommentModal from "../EditCommentForm";
 import "./Comments.css";
 import ViewComment from "./viewComment";
 
@@ -21,7 +18,6 @@ function Comments() {
 
     const dispatch = useDispatch();
     const [commentBody, setCommentBody] = useState("");
-    // const [confirmDeleteModal, setConfirmDeleteModal] = useState(false)
 
     //useEffect for getComments
     useEffect(() => {
@@ -42,19 +38,6 @@ function Comments() {
         return dispatch(addComment(payload));
     };
 
-    // const handleDelete = async (songId, commentId) => {
-    //     const payload = {
-    //         songId,
-    //         commentId,
-    //     };
-
-    //     await dispatch(deleteComment(payload));
-    //     setConfirmDeleteModal(false);
-    // };
-
-    // const confirmDelete = async (comment) => {
-    //     setConfirmDeleteModal(true);
-    // }
 
     //filters comments for specific song page
     const filteredComments = comments.filter((comment) => {
