@@ -72,3 +72,20 @@
 .main-play-button:hover {
     opacity: 80%;
 }
+
+.rhap_main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rhap_controls-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.rhap_main, .rhap_progress-section, .rhap_current-time, .rhap_progress-container, .rhap_button-clear {
+    color: white;
+    background-color: grey;
+}

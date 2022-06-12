@@ -1,17 +1,22 @@
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { getSongs } from "../../store/songs";
 import ViewSong from "./ViewSong";
 import AddSongModal from "../AddSongModal";
 import "./MainPage.css";
 
+import ProgressBar from "../SongProgressBar";
+// import 'react-h5-audio-plyaer/lib/styles.css';
+
+
 function MainPage() {
     const sessionUser = useSelector((state) => state.session);
     const songsObj = useSelector((state) => state.songState);
     const songs = Object.values(songsObj);
     const dispatch = useDispatch();
+
+    const [songPlaying, setSongPlaying] = useState(null);
 
     useEffect(() => {
         dispatch(getSongs());
@@ -32,10 +37,11 @@ function MainPage() {
             <div className="song-container">
                 {songs.map((song) => {
                     return (
-                        <ViewSong song={song} />
+                        <ViewSong song={song} setSongPlaying={setSongPlaying} />
                     );
                 })}
             </div>
+            {songPlaying && <ProgressBar song={songPlaying} />}
         </div>
     );
 }

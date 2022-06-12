@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import AudioPlayer from "../AudioPlayer";
 import './MainPage.css';
 
-const ViewSong = ({ song }) => {
+const ViewSong = ({ song, setSongPlaying }) => {
 
 
 
@@ -19,7 +19,7 @@ const ViewSong = ({ song }) => {
                 />}
             </NavLink>
             <div>{song.title}</div>
-            <AudioPlayer song={song} />
+            <AudioPlayer song={song} setSongPlaying={setSongPlaying} />
         </div>
     );
 }
