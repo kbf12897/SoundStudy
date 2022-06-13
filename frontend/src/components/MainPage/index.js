@@ -7,7 +7,6 @@ import AddSongModal from "../AddSongModal";
 import "./MainPage.css";
 
 import ProgressBar from "../SongProgressBar";
-// import 'react-h5-audio-player/lib/styles.css';
 
 
 function MainPage() {
