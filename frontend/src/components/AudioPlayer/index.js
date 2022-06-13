@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import "./AudioPlayer.css";
 
+
 function AudioPlayer(props) {
     const songsObj = useSelector((state) => state.songState);
     const songs = Object.values(songsObj);
@@ -35,6 +36,7 @@ function AudioPlayer(props) {
     const playSongHandler = (song) => {
         setCurrentSongIndex(song.id);
         setIsPlaying(!isPlaying);
+        props.setSongPlaying(song)
         audioEl.current.play();
     };
 
