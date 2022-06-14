@@ -7,6 +7,8 @@ const ProgressBar = ({ song }) => {
         <div>
             <AudioPlayer
             src={song.url}
+            showSkipControls={true}
+            showJumpControls={false}
             />
         </div>
     );
