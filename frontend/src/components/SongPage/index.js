@@ -5,6 +5,7 @@ import { getSongs } from "../../store/songs";
 import { removeSong } from "../../store/songs";
 import EditSongModal from "../EditSongForm";
 import Comments from "../Comments";
+import ProgressBar from "../SongProgressBar";
 import "./SongPage.css";
 
 function SongPage() {
@@ -15,6 +16,8 @@ function SongPage() {
 
     const dispatch = useDispatch();
     const history = useHistory();
+
+
 
     //useEffect for getSongs
     useEffect(() => {
@@ -57,6 +60,7 @@ function SongPage() {
                     </div>
                     <Comments />
                 </div>
+                <ProgressBar />
             </div>
         );
     }

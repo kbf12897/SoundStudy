@@ -9,6 +9,7 @@ const ProgressBar = ({ song }) => {
             src={song.url}
             showSkipControls={true}
             showJumpControls={false}
+
             />
         </div>
     );
