@@ -10,18 +10,9 @@ function AudioPlayer(props) {
     const songs = Object.values(songsObj);
     const [isPlaying, setIsPlaying] = useState(false);
 
-    const audioEl = useRef(null);
 
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
-
-    useEffect(() => {
-        if (isPlaying) {
-            audioEl.current.play();
-        } else {
-            audioEl.current.pause();
-        }
-    });
 
     useEffect(() => {
         setNextSongIndex(() => {
@@ -35,23 +26,13 @@ function AudioPlayer(props) {
 
     const playSongHandler = (song) => {
         setCurrentSongIndex(song.id);
-        setIsPlaying(!isPlaying);
         props.setSongPlaying(song)
-        audioEl.current.play();
     };
 
-    const songEnd = () => {
-        setIsPlaying(false);
-        audioEl.current.pause();
-        audioEl.current.play();
-    };
 
     return (
         <div className="buttons-div">
             <div key={props.song.id}>
-                <audio ref={audioEl} onEnded={songEnd}>
-                    <source src={`${props.song.url}`}></source>
-                </audio>
                 <button
                     className="pause-play"
                     onClick={() => playSongHandler(props.song)}
