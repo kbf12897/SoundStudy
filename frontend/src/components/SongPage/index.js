@@ -5,7 +5,7 @@ import { getSongs } from "../../store/songs";
 import { removeSong } from "../../store/songs";
 import EditSongModal from "../EditSongForm";
 import Comments from "../Comments";
-import ProgressBar from "../SongProgressBar";
+import { ProgressBar } from "../../context/ProgressBar";
 import "./SongPage.css";
 
 function SongPage() {

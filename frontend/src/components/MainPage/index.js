@@ -6,7 +6,7 @@ import ViewSong from "./ViewSong";
 import AddSongModal from "../AddSongModal";
 import "./MainPage.css";
 
-import ProgressBar from "../SongProgressBar";
+import { ProgressBar } from "../../context/ProgressBar";
 
 
 function MainPage() {
