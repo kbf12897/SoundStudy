@@ -105,7 +105,6 @@ const songReducer = (state = {}, action) => {
             return newState;
         case ADD:
             newState = { ...state };
-            console.log('NEWSTATE', newState)
             newState[action.song.id] = action.song;
             return newState;
         case DELETE:

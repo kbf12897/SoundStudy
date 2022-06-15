@@ -1,4 +1,5 @@
 import React, { useContext, useRef, useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import ReactDOM from 'react-dom';
 import AudioPlayer from 'react-h5-audio-player';
 import './ProgressBar.css';
@@ -25,15 +26,25 @@ export function ProgressBarProvider({ children }) {
 
 export function ProgressBar({ song }) {
     const progressBarNode = useContext(ProgressBarContext);
-    if (!progressBarNode) return null;
+    const songsObj = useSelector((state) => state.songState);
+    const songs = Object.values(songsObj);
 
+    const [currentSong, setCurrentSong] = useState(song);
+    const [nextSong, setNextSong] = useState(songsObj[song.id + 1]);
+    const [prevSong, setPrevSong] = useState();
+
+
+    if (!progressBarNode) return null;
     return ReactDOM.createPortal(
         <div>
             <AudioPlayer
-            src={song.url}
+            autoPlay={true}
+            src={currentSong.url}
             showSkipControls={true}
             showJumpControls={false}
-
+            onPlay={() => setCurrentSong(song)}
+            onClickNext={() => setCurrentSong(nextSong)}
+            onClickPrevious={() => setCurrentSong(songsObj[currentSong.id - 1])}
             />
         </div>,
         progressBarNode
