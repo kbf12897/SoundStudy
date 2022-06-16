@@ -33,18 +33,9 @@ export function ProgressBar({ song }) {
     const [nextSong, setNextSong] = useState(songsObj[song.id + 1]);
     const [prevSong, setPrevSong] = useState();
 
-    console.log('NEXTSONGNEXTSONG', nextSong)
-    console.log('CURRENTSONG', currentSong)
     const player = useRef(currentSong);
 
-
-    // const skipBack = () => {
-    //     const index = currentSong.id;
-
-    //     if (index === 0) setCurrentSong(songs[songs.length - 1]);
-    //     else setCurrentSong(songs[index - 1]);
-    // }
-
+    console.log(songs)
 
     if (!progressBarNode) return null;
     return ReactDOM.createPortal(
@@ -55,9 +46,8 @@ export function ProgressBar({ song }) {
             src={currentSong.url}
             showSkipControls={true}
             showJumpControls={false}
-            // onPlay={() => setCurrentSong(song)}
-            onClickNext={() => setCurrentSong(songsObj[currentSong.id + 1])}
-            onClickPrevious={() => setCurrentSong(songsObj[currentSong.id - 1])}
+            onClickNext={() => setCurrentSong(songsObj[currentSong.id + 1] ? songsObj[currentSong.id + 1] : songsObj[songs[0].id])}
+            onClickPrevious={() => setCurrentSong(songsObj[currentSong.id - 1] ? songsObj[currentSong.id - 1] : songsObj[songs[songs.length - 1].id])}
             />
         </div>,
         progressBarNode
