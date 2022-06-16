@@ -1,13 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useState } from "react";
 import "./AudioPlayer.css";
 
 
 function AudioPlayer(props) {
-    const songsObj = useSelector((state) => state.songState);
-    const songs = Object.values(songsObj);
     const [isPlaying, setIsPlaying] = useState(false);
 
 
@@ -23,6 +20,6 @@ function AudioPlayer(props) {
             </div>
         </div>
     );
-}
+};
 
 export default AudioPlayer;

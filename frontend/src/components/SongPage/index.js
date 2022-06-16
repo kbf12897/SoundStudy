@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useHistory, Redirect } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { getSongs } from "../../store/songs";
 import { removeSong } from "../../store/songs";
 import EditSongModal from "../EditSongForm";
+import AudioPlayer from '../AudioPlayer';
 import Comments from "../Comments";
 import { ProgressBar } from "../../context/ProgressBar";
 import "./SongPage.css";
@@ -16,8 +17,6 @@ function SongPage() {
 
     const dispatch = useDispatch();
     const history = useHistory();
-
-
 
     //useEffect for getSongs
     useEffect(() => {
@@ -54,10 +53,12 @@ function SongPage() {
                         {song.songImg && <img
                             className="individual-song-img"
                             src={song.songImg}
+                            alt='song-img'
                         />}
                         {!song.songImg && <img className="no-song-img" src='https://www.vhv.rs/dpng/d/42-424143_music-note-no-background-hd-png-download.png' alt='song-img'/>}
                         {song.userId === userId ? songEditLinks : null}
                     </div>
+                    <AudioPlayer song={song}/>
                     <Comments />
                 </div>
                 <ProgressBar />

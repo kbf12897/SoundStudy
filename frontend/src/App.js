@@ -8,6 +8,7 @@ import SongPage from "./components/SongPage";
 import MainPage from "./components/MainPage";
 import ProfilePage from './components/ProfilePage';
 import * as sessionActions from "./store/session";
+import { ProgressBar } from './context/ProgressBar';
 import Navigation from "./components/Navigation";
 
 
@@ -44,6 +45,7 @@ function App() {
                     </Route>
                 </Switch>
             )}
+            <ProgressBar />
         </>
     );
 }

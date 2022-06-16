@@ -29,23 +29,18 @@ export function ProgressBar({ song }) {
     const songsObj = useSelector((state) => state.songState);
     const songs = Object.values(songsObj);
 
-    console.log('SONGSONSGNSG',song)
-
     useEffect(() => {
         setCurrentSong(song);
     }, [song])
 
     const [currentSong, setCurrentSong] = useState(song);
-    const [nextSong, setNextSong] = useState(songsObj[song.id + 1]);
-    const [prevSong, setPrevSong] = useState();
-
 
     if (!progressBarNode) return null;
     return ReactDOM.createPortal(
         <div>
             <AudioPlayer
             autoPlay={true}
-            src={currentSong.url}
+            src={currentSong?.url}
             showSkipControls={true}
             showJumpControls={false}
             onClickNext={() => setCurrentSong(songsObj[currentSong.id + 1] ? songsObj[currentSong.id + 1] : songsObj[songs[0].id])}
