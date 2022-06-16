@@ -11,31 +11,12 @@ function AudioPlayer(props) {
     const [isPlaying, setIsPlaying] = useState(false);
 
 
-    const [currentSongIndex, setCurrentSongIndex] = useState(0);
-    const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
-
-    useEffect(() => {
-        setNextSongIndex(() => {
-            if (currentSongIndex + 1 > songs.length - 1) {
-                return 0;
-            } else {
-                return currentSongIndex + 1;
-            }
-        });
-    }, [currentSongIndex, songs.length]);
-
-    const playSongHandler = (song) => {
-        setCurrentSongIndex(song.id);
-        props.setSongPlaying(song)
-    };
-
-
     return (
         <div className="buttons-div">
             <div key={props.song.id}>
                 <button
                     className="pause-play"
-                    onClick={() => playSongHandler(props.song)}
+                    onClick={() => props.setSongPlaying(props.song)}
                 >
                     <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
                 </button>
