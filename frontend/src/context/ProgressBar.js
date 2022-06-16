@@ -33,9 +33,17 @@ export function ProgressBar({ song }) {
     const [nextSong, setNextSong] = useState(songsObj[song.id + 1]);
     const [prevSong, setPrevSong] = useState();
 
-    const player = useRef();
+    console.log('NEXTSONGNEXTSONG', nextSong)
+    console.log('CURRENTSONG', currentSong)
+    const player = useRef(currentSong);
 
-    console.log('REFEREREFE', player)
+
+    // const skipBack = () => {
+    //     const index = currentSong.id;
+
+    //     if (index === 0) setCurrentSong(songs[songs.length - 1]);
+    //     else setCurrentSong(songs[index - 1]);
+    // }
 
 
     if (!progressBarNode) return null;
@@ -47,8 +55,8 @@ export function ProgressBar({ song }) {
             src={currentSong.url}
             showSkipControls={true}
             showJumpControls={false}
-            onPlay={() => setCurrentSong(song)}
-            onClickNext={() => setCurrentSong(nextSong)}
+            // onPlay={() => setCurrentSong(song)}
+            onClickNext={() => setCurrentSong(songsObj[currentSong.id + 1])}
             onClickPrevious={() => setCurrentSong(songsObj[currentSong.id - 1])}
             />
         </div>,
