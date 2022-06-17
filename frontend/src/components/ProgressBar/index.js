@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
-import setSongReducer, { setSong } from "../../store/setSong";
+import setSongReducer, { setSong, setPlayedSongs } from "../../store/setSong";
 import './ProgressBar.css';
 
 
@@ -10,11 +10,13 @@ const ProgressBar = () => {
     const sesssionUser = useSelector(state => state?.session);
     const song = useSelector(state => state?.setSongReducer);
     const queue = song.queue;
+    const playedSongs = song.playedSongs;
     const songsObj = useSelector((state) => state.songState);
     const songs = Object.values(songsObj);
 
+    console.log('PREVIOUSSONGS', playedSongs)
+
     let songUrl;
-    let prevSong;
     if (song.currentSong) songUrl = song?.currentSong?.url;
 
     const handleSkipBack = (song) => {
@@ -23,13 +25,13 @@ const ProgressBar = () => {
 
     const handleQueue = () => {
         if (queue.length) {
+            dispatch(setPlayedSongs(song.currentSong))
             const queueSong = queue.pop();
-            prevSong = queueSong;
             dispatch(setSong(queueSong));
         }
     };
 
-    console.log('PREVSONG',prevSong)
+
 
     return (
         <div>
@@ -40,7 +42,7 @@ const ProgressBar = () => {
             showJumpControls={false}
             onEnded={() => handleQueue()}
             onClickNext={() => handleQueue()}
-            onClickPrevious={() => handleSkipBack(prevSong)}
+            onClickPrevious={() => handleSkipBack(playedSongs)}
             />
         </div>
     );
