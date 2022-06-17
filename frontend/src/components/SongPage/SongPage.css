@@ -54,3 +54,7 @@
     margin-top: 50px;
     font-size: 15px;
 }
+
+.buttons-div {
+    width: fit-content;
+}

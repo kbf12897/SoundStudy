@@ -55,9 +55,9 @@ function SongPage() {
                             alt='song-img'
                         />}
                         {!song.songImg && <img className="no-song-img" src='https://www.vhv.rs/dpng/d/42-424143_music-note-no-background-hd-png-download.png' alt='song-img'/>}
+                        <AudioPlayer song={song}/>
                         {song?.userId === userId ? songEditLinks : null}
                     </div>
-                    <AudioPlayer song={song}/>
                     <Comments />
                 </div>
             </div>

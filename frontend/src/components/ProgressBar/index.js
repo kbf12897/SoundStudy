@@ -9,27 +9,31 @@ const ProgressBar = () => {
     const dispatch = useDispatch();
     const sesssionUser = useSelector(state => state?.session);
     const song = useSelector(state => state?.setSongReducer);
+    const queue = song.queue;
     const songsObj = useSelector((state) => state.songState);
     const songs = Object.values(songsObj);
-
-
-
-    const currentSong = song.currentSong;
 
     let songUrl;
     if (song.currentSong) songUrl = song?.currentSong?.url;
 
-
-    const handleSkip = (song) => {
-        dispatch(setSong(song));
+    const handleSkip = (currentSong) => {
+        dispatch(setSong(currentSong.next));
+        song.prev = currentSong;
         song.next = songsObj[song.id + 1] ? songsObj[song.id + 1] : songsObj[songs[0].id];
-    }
+    };
 
-    const handleSkipBack = (song) => {
-        dispatch(setSong(song));
+    const handleSkipBack = (currentSong) => {
+        dispatch(setSong(currentSong.prev));
+        song.next = currentSong;
         song.prev = songsObj[song?.id - 1] ? songsObj[song?.id - 1] : songsObj[songs[songs.length - 1].id];
-    }
+    };
 
+    const handleQueue = () => {
+        if (queue.length) {
+            const song = queue.pop();
+            dispatch(setSong(song));
+        }
+    };
 
 
     return (
@@ -39,8 +43,9 @@ const ProgressBar = () => {
             src={songUrl}
             showSkipControls={true}
             showJumpControls={false}
-            onClickNext={() => handleSkip(song.currentSong.next)}
-            onClickPrevious={() => handleSkipBack(song.currentSong.prev)}
+            onEnded={() => handleQueue()}
+            onClickNext={() => handleSkip(song.currentSong)}
+            onClickPrevious={() => handleSkipBack(song.currentSong)}
             />
         </div>
     );

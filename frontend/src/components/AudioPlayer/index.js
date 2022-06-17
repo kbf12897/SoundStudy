@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import "./AudioPlayer.css";
-import { setSong } from "../../store/setSong";
+import { setSong, loadSongandQueue } from "../../store/setSong";
 
 
 function AudioPlayer(props) {
@@ -14,20 +14,19 @@ function AudioPlayer(props) {
 
     const [isPlaying, setIsPlaying] = useState(false);
 
+    const songProp = props.song;
 
-    const handlePlay = (song) => {
-        dispatch(setSong(song));
-        song.next = songsObj[song.id + 1] ? songsObj[song.id + 1] : songsObj[songs[0].id];
-        song.prev = songsObj[song?.id - 1] ? songsObj[song?.id - 1] : songsObj[songs[songs.length - 1].id];
+    const handlePlay = (chosenSong) => {
+        dispatch(loadSongandQueue(chosenSong));
     }
 
 
     return (
         <div className="buttons-div">
-            <div key={props?.song.id}>
+            <div className="play-button-div" key={props?.song.id}>
                 <button
-                    className="pause-play"
-                    onClick={() => handlePlay(props?.song)}
+                    className="pause-play main"
+                    onClick={() => handlePlay(songProp)}
                 >
                     <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
                 </button>
