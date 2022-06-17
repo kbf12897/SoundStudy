@@ -58,3 +58,8 @@
 .buttons-div {
     width: fit-content;
 }
+
+.song-info div.buttons-div, .song-info div.play-button-div {
+    background-color: #1e1e1e;
+    margin-left: 30px;
+}
