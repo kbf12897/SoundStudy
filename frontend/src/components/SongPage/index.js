@@ -49,14 +49,14 @@ function SongPage() {
             <div>
                 <div className="song-div">
                     <div className="song-info">
-                        <h3 className="song-title">{song.title}</h3>
+                        <h3 className="song-title">{song?.title}</h3>
                         {song.songImg && <img
                             className="individual-song-img"
-                            src={song.songImg}
+                            src={song?.songImg}
                             alt='song-img'
                         />}
                         {!song.songImg && <img className="no-song-img" src='https://www.vhv.rs/dpng/d/42-424143_music-note-no-background-hd-png-download.png' alt='song-img'/>}
-                        {song.userId === userId ? songEditLinks : null}
+                        {song?.userId === userId ? songEditLinks : null}
                     </div>
                     <AudioPlayer song={song}/>
                     <Comments />
@@ -64,7 +64,7 @@ function SongPage() {
                 <ProgressBar />
             </div>
         );
-    }
-}
+    };
+};
 
 export default SongPage;

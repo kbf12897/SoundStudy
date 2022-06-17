@@ -10,10 +10,10 @@ function AudioPlayer(props) {
 
     return (
         <div className="buttons-div">
-            <div key={props.song.id}>
+            <div key={props?.song.id}>
                 <button
                     className="pause-play"
-                    onClick={() => props.setSongPlaying(props.song)}
+                    onClick={() => props.setSongPlaying(props?.song)}
                 >
                     <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
                 </button>
