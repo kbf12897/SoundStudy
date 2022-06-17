@@ -8,18 +8,26 @@ import './ProgressBar.css';
 const ProgressBar = () => {
     const dispatch = useDispatch();
     const sesssionUser = useSelector(state => state?.session);
-    const setSong = useSelector(state => state?.setSongReducer);
+    const song = useSelector(state => state?.setSongReducer);
     const songsObj = useSelector((state) => state.songState);
     const songs = Object.values(songsObj);
 
-    const [currentSong, setCurrentSong] = useState(setSong.currentSong);
+
+
+    const currentSong = song.currentSong;
 
     let songUrl;
-    if (setSong.currentSong) songUrl = setSong?.currentSong?.url;
+    if (song.currentSong) songUrl = song?.currentSong?.url;
 
 
     const handleSkip = (song) => {
+        dispatch(setSong(song));
+        song.next = songsObj[song.id + 1] ? songsObj[song.id + 1] : songsObj[songs[0].id];
+    }
 
+    const handleSkipBack = (song) => {
+        dispatch(setSong(song));
+        song.prev = songsObj[song?.id - 1] ? songsObj[song?.id - 1] : songsObj[songs[songs.length - 1].id];
     }
 
 
@@ -31,8 +39,8 @@ const ProgressBar = () => {
             src={songUrl}
             showSkipControls={true}
             showJumpControls={false}
-            onClickNext={() => setCurrentSong(songsObj[currentSong?.id + 1] ? songsObj[currentSong?.id + 1] : songsObj[songs[0].id])}
-            onClickPrevious={() => setCurrentSong(songsObj[currentSong?.id - 1] ? songsObj[currentSong?.id - 1] : songsObj[songs[songs.length - 1].id])}
+            onClickNext={() => handleSkip(song.currentSong.next)}
+            onClickPrevious={() => handleSkipBack(song.currentSong.prev)}
             />
         </div>
     );
