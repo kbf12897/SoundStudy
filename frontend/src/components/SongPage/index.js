@@ -6,7 +6,6 @@ import { removeSong } from "../../store/songs";
 import EditSongModal from "../EditSongForm";
 import AudioPlayer from '../AudioPlayer';
 import Comments from "../Comments";
-import { ProgressBar } from "../../context/ProgressBar";
 import "./SongPage.css";
 
 function SongPage() {
@@ -49,22 +48,21 @@ function SongPage() {
             <div>
                 <div className="song-div">
                     <div className="song-info">
-                        <h3 className="song-title">{song.title}</h3>
+                        <h3 className="song-title">{song?.title}</h3>
                         {song.songImg && <img
                             className="individual-song-img"
-                            src={song.songImg}
+                            src={song?.songImg}
                             alt='song-img'
                         />}
                         {!song.songImg && <img className="no-song-img" src='https://www.vhv.rs/dpng/d/42-424143_music-note-no-background-hd-png-download.png' alt='song-img'/>}
-                        {song.userId === userId ? songEditLinks : null}
+                        <AudioPlayer song={song}/>
+                        {song?.userId === userId ? songEditLinks : null}
                     </div>
-                    <AudioPlayer song={song}/>
                     <Comments />
                 </div>
-                <ProgressBar />
             </div>
         );
-    }
-}
+    };
+};
 
 export default SongPage;

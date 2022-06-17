@@ -6,7 +6,6 @@ import ViewSong from "./ViewSong";
 import AddSongModal from "../AddSongModal";
 import "./MainPage.css";
 
-import { ProgressBar } from "../../context/ProgressBar";
 
 
 function MainPage() {
@@ -40,7 +39,6 @@ function MainPage() {
                     );
                 })}
             </div>
-            {songPlaying && <ProgressBar song={songPlaying} />}
         </div>
     );
 }
