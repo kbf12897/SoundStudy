@@ -14,27 +14,22 @@ const ProgressBar = () => {
     const songs = Object.values(songsObj);
 
     let songUrl;
+    let prevSong;
     if (song.currentSong) songUrl = song?.currentSong?.url;
 
-    const handleSkip = (currentSong) => {
-        dispatch(setSong(currentSong.next));
-        song.prev = currentSong;
-        song.next = songsObj[song.id + 1] ? songsObj[song.id + 1] : songsObj[songs[0].id];
-    };
-
-    const handleSkipBack = (currentSong) => {
-        dispatch(setSong(currentSong.prev));
-        song.next = currentSong;
-        song.prev = songsObj[song?.id - 1] ? songsObj[song?.id - 1] : songsObj[songs[songs.length - 1].id];
+    const handleSkipBack = (song) => {
+        dispatch(setSong(song));
     };
 
     const handleQueue = () => {
         if (queue.length) {
-            const song = queue.pop();
-            dispatch(setSong(song));
+            const queueSong = queue.pop();
+            prevSong = queueSong;
+            dispatch(setSong(queueSong));
         }
     };
 
+    console.log('PREVSONG',prevSong)
 
     return (
         <div>
@@ -44,8 +39,8 @@ const ProgressBar = () => {
             showSkipControls={true}
             showJumpControls={false}
             onEnded={() => handleQueue()}
-            onClickNext={() => handleSkip(song.currentSong)}
-            onClickPrevious={() => handleSkipBack(song.currentSong)}
+            onClickNext={() => handleQueue()}
+            onClickPrevious={() => handleSkipBack(prevSong)}
             />
         </div>
     );
