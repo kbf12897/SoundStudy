@@ -23,7 +23,7 @@ function AudioPlayer(props) {
 
     return (
         <div className="buttons-div">
-            <div className="play-button-div" key={props?.song.id}>
+            <div className="play-button-div song-page" key={props?.song.id}>
                 <button
                     className="pause-play main"
                     onClick={() => handlePlay(songProp)}
