@@ -6,7 +6,6 @@ import { removeSong } from "../../store/songs";
 import EditSongModal from "../EditSongForm";
 import AudioPlayer from '../AudioPlayer';
 import Comments from "../Comments";
-import ProgressBar from "../ProgressBar";
 import "./SongPage.css";
 
 function SongPage() {
@@ -61,7 +60,6 @@ function SongPage() {
                     <AudioPlayer song={song}/>
                     <Comments />
                 </div>
-                <ProgressBar />
             </div>
         );
     };
