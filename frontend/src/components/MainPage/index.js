@@ -2,11 +2,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { getSongs } from "../../store/songs";
+import { setSong } from "../../store/setSong";
 import ViewSong from "./ViewSong";
 import AddSongModal from "../AddSongModal";
+import ProgressBar from "../ProgressBar";
 import "./MainPage.css";
 
-import { ProgressBar } from "../../context/ProgressBar";
 
 
 function MainPage() {
