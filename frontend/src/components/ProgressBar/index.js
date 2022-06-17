@@ -14,6 +14,8 @@ const ProgressBar = () => {
 
     const [currentSong, setCurrentSong] = useState(setSong.currentSong);
 
+
+
     let songUrl;
     if (setSong.currentSong) songUrl = setSong?.currentSong?.url;
 
