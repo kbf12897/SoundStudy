@@ -21,12 +21,10 @@ const UserPage = () => {
     return (
         <div className='top-level'>
             <div className='content-container'>
-                <div className='header-img'>
-                    HEADER IMG
+                <div className='header-username'>
+                    {sessionUser.username}
                 </div>
-                <div className='page-navigation'>
-                    PAGE NAVIGATION
-                </div>
+                <div className='uploaded-songs-title'>Uploaded songs</div>
                 <div className='user-uploaded-songs'>
                     {userSongs.map((song) => {
                         return (
