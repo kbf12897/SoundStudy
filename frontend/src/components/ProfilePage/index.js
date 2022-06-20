@@ -36,7 +36,7 @@ const UserPage = () => {
                                         alt='song-img'
                                     />
                                 </NavLink>
-                                <div>{song.title}</div>
+                                <div className='profile-page-song-title'>{song.title}</div>
                                 <AudioPlayer song={song}/>
                             </div>
                         )
