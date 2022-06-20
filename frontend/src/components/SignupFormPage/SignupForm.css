@@ -46,3 +46,8 @@ li.errors {
     padding: 5px;
     color: red;
 }
+
+
+.email-label, .username-label, .password-label, .confirm-password-label {
+    background-color: black;
+}

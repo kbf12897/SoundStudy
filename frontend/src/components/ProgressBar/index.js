@@ -34,7 +34,7 @@ const ProgressBar = () => {
 
     return (
         <div>
-            <AudioPlayer
+            {song?.currentSong && <AudioPlayer
             autoPlay={true}
             src={songUrl}
             showSkipControls={true}
@@ -42,7 +42,7 @@ const ProgressBar = () => {
             onEnded={() => handleQueue()}
             onClickNext={() => handleQueue()}
             onClickPrevious={() => handleSkipBack(playedSongs)}
-            />
+            />}
             {song?.currentSong && <div className="progress-bar-song-and-img">
                 <img className="progress-bar-song-img" src={song?.currentSong?.songImg} alt='progress-bar-img'></img>
                 <div className="progress-bar-song-title">{song?.currentSong?.title}</div>
