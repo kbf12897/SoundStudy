@@ -43,10 +43,10 @@ const ProgressBar = () => {
             onClickNext={() => handleQueue()}
             onClickPrevious={() => handleSkipBack(playedSongs)}
             />
-            <div className="progress-bar-song-and-img">
+            {song?.currentSong && <div className="progress-bar-song-and-img">
                 <img className="progress-bar-song-img" src={song?.currentSong?.songImg} alt='progress-bar-img'></img>
                 <div className="progress-bar-song-title">{song?.currentSong?.title}</div>
-            </div>
+            </div>}
         </div>
     );
 }
