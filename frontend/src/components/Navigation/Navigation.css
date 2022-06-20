@@ -136,3 +136,8 @@ a.user-page-button {
     cursor: pointer;
     text-align: center;
 }
+
+i.fas.fa-user-circle {
+    background-color: #ff5500;
+    border-radius: 5px;
+}
