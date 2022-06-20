@@ -14,7 +14,6 @@ const ProgressBar = () => {
     const songsObj = useSelector((state) => state.songState);
     const songs = Object.values(songsObj);
 
-    console.log('PREVIOUSSONGS', playedSongs)
 
     let songUrl;
     if (song.currentSong) songUrl = song?.currentSong?.url;
@@ -44,6 +43,10 @@ const ProgressBar = () => {
             onClickNext={() => handleQueue()}
             onClickPrevious={() => handleSkipBack(playedSongs)}
             />
+            <div className="progress-bar-song-and-img">
+                <img className="progress-bar-song-img" src={song?.currentSong?.songImg} alt='progress-bar-img'></img>
+                <div className="progress-bar-song-title">{song?.currentSong?.title}</div>
+            </div>
         </div>
     );
 }

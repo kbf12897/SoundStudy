@@ -283,3 +283,30 @@ svg {
 .rhap_button-clear:focus:not(:focus-visible) {
   outline: 0;
 }
+
+.progress-bar-song-and-img {
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  width: 200px;
+  justify-content: space-around;
+  align-items: center;
+  bottom: 3px;
+  left: 150px;
+  position: fixed;
+  background-color: #494848;
+}
+
+.progress-bar-song-title {
+  color: white;
+  font-size: 15px;
+  height: fit-content;
+  width: fit-content;
+  background-color: #494848;
+  text-align: center;
+}
+
+.progress-bar-song-img {
+  height: 60px;
+  width: 60px;
+}
