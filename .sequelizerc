@@ -1,6 +1,6 @@
 // backend/.sequelizerc
 const path = require('path');
-
+//work
 module.exports = {
   config: path.resolve('backend', 'config', 'database.js'),
   'models-path': path.resolve('backend', 'db', 'models'),
