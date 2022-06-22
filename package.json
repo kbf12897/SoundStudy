@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/kbf12897/authenticate-me#readme",
   "dependencies": {
-    "body-parser": "^1.20.0"
+    "body-parser": "^1.20.0",
+    "sequelize-cli": "^6.4.1"
   }
 }
